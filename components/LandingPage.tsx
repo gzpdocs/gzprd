@@ -136,7 +136,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
 
 
-                 {/* Feature 3: Smart AI */}
+                 {/* Feature 1: Smart AI */}
                   <div className="p-8 rounded-3xl bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
                      <div className="w-12 h-12 bg-zinc-50 dark:bg-zinc-900 rounded-2xl flex items-center justify-center text-zinc-900 dark:text-white mb-6 border border-zinc-100 dark:border-zinc-800 shadow-sm">
                         <Sparkles size={24} />
