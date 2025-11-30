@@ -12,7 +12,8 @@ import {
   CheckCircle2,
   Terminal,
   Key,
-  UserRoundX
+  UserRoundX,
+  Coffee
 } from 'lucide-react';
 
 interface LandingPageProps {
@@ -403,14 +404,23 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
        </main>
 
        {/* --- Footer --- */}
-       <footer className="py-12 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
-          <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
+       <footer className="py-12 border-t border-zinc-200/50 dark:border-zinc-800/50 bg-[#FAFAFA] dark:bg-[#09090b]">
+          <div className="max-w-6xl mx-auto px-6 flex flex-col items-center justify-center gap-6 text-center">
               <div className="flex items-center gap-2">
-                 <span className="font-bold text-zinc-900 dark:text-white tracking-tight">GZPRD</span>
+                 <span className="font-bold text-zinc-900 dark:text-white tracking-tight text-lg">GZPRD</span>
               </div>
-              <p className="text-zinc-400 dark:text-zinc-600 text-sm">
-                 © {new Date().getFullYear()} GZPRD. Built with Bolt.new.
+              <p className="text-zinc-500 dark:text-zinc-500 text-sm">
+                 © {new Date().getFullYear()} GZPRD. All rights reserved.
               </p>
+              <a
+                href="https://buymeacoffee.com/avenca.digital"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#FFDD00] hover:bg-[#FFED4E] text-zinc-900 font-semibold text-sm transition-all shadow-sm hover:shadow-md"
+              >
+                <Coffee size={18} />
+                <span>Buy me a beer</span>
+              </a>
           </div>
        </footer>
 
