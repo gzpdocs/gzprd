@@ -105,7 +105,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
               <Button size="lg" onClick={onStart} rightIcon={<ChevronRight size={18}/>} className="h-14 px-8 text-lg w-full sm:w-auto shadow-xl shadow-zinc-200/50 dark:shadow-zinc-900/50">
                  Start Writing
               </Button>
-              <Button size="lg" variant="outline" onClick={onStart} className="h-14 px-8 text-lg w-full sm:w-auto bg-white dark:bg-zinc-900">
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => window.open('https://gzprd.bolt.host/?id=d4d37efc-e910-4a83-bcef-4fccdc70504a', '_blank')}
+                className="h-14 px-8 text-lg w-full sm:w-auto bg-white dark:bg-zinc-900"
+              >
                  View Example
               </Button>
             </div>
