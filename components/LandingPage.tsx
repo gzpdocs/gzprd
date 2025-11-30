@@ -115,89 +115,68 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
             </div>
          </header>
 
-         {/* --- Process Flow --- */}
+         {/* --- PRD Preview Mockup --- */}
          <section className="px-6 mb-24 md:mb-32">
-            <div className="max-w-6xl mx-auto">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <div className="max-w-5xl mx-auto relative group">
+                {/* Glow Effect */}
+                <div className="absolute -inset-1 bg-gradient-to-r from-zinc-200 to-zinc-400 dark:from-zinc-800 dark:to-zinc-700 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
 
-                    {/* Step 1 */}
-                    <div className="relative group">
-                        <div className="absolute -inset-0.5 bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-800 dark:to-zinc-700 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                        <div className="relative bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-8 h-full flex flex-col">
-                            <div className="flex items-center gap-4 mb-6">
-                                <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white font-bold text-lg border border-zinc-200 dark:border-zinc-700">
-                                    1
-                                </div>
-                                <h3 className="text-lg font-bold text-zinc-900 dark:text-white">Configure</h3>
+                {/* PRD Document Container */}
+                <div className="relative bg-white dark:bg-[#0C0C0E] rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden">
+                    {/* Document Header */}
+                    <div className="bg-zinc-50/50 dark:bg-zinc-950/30 border-b border-zinc-100 dark:border-zinc-800 p-8 md:p-12 text-center">
+                        <span className="inline-block px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-500 dark:text-zinc-400 text-[10px] font-bold uppercase tracking-widest mb-4">Product Requirement Document</span>
+                        <div className="h-8 w-2/3 mx-auto bg-zinc-900/5 dark:bg-zinc-100/10 rounded-lg mb-3"></div>
+                        <div className="h-4 w-1/3 mx-auto bg-zinc-200 dark:bg-zinc-800 rounded opacity-50"></div>
+                    </div>
+
+                    {/* Document Content */}
+                    <div className="flex">
+                        {/* Table of Contents */}
+                        <div className="w-1/4 border-r border-zinc-100 dark:border-zinc-800 p-6 space-y-3 hidden md:block">
+                            <div className="flex items-center gap-2 mb-4 pb-3 border-b border-zinc-200 dark:border-zinc-800">
+                                <div className="w-3 h-3 bg-zinc-300 dark:bg-zinc-700 rounded"></div>
+                                <div className="h-2 w-20 bg-zinc-300 dark:bg-zinc-700 rounded"></div>
                             </div>
-                            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed flex-1">
-                                Select the sections you need for your PRD. Add your product name, description, and choose your AI model.
-                            </p>
-                            <div className="mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-800 space-y-2">
-                                <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-500">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600"></div>
-                                    <span>Custom sections</span>
+                            <div className="h-3 w-full bg-zinc-900 dark:bg-zinc-100 rounded opacity-10 dark:opacity-20"></div>
+                            <div className="h-3 w-3/4 bg-zinc-200 dark:bg-zinc-800 rounded opacity-60"></div>
+                            <div className="h-3 w-5/6 bg-zinc-200 dark:bg-zinc-800 rounded opacity-60"></div>
+                            <div className="h-3 w-2/3 bg-zinc-200 dark:bg-zinc-800 rounded opacity-60"></div>
+                            <div className="h-3 w-3/4 bg-zinc-200 dark:bg-zinc-800 rounded opacity-60"></div>
+                            <div className="h-3 w-1/2 bg-zinc-200 dark:bg-zinc-800 rounded opacity-60"></div>
+                        </div>
+
+                        {/* Main Content Area */}
+                        <div className="flex-1 p-8 md:p-12 space-y-8">
+                            {/* Section 1 */}
+                            <div className="space-y-3">
+                                <div className="h-6 w-1/3 bg-zinc-900 dark:bg-zinc-100 rounded-lg opacity-10 dark:opacity-20"></div>
+                                <div className="h-3 w-full bg-zinc-200 dark:bg-zinc-800 rounded opacity-50"></div>
+                                <div className="h-3 w-5/6 bg-zinc-200 dark:bg-zinc-800 rounded opacity-50"></div>
+                                <div className="h-3 w-4/5 bg-zinc-200 dark:bg-zinc-800 rounded opacity-50"></div>
+                            </div>
+
+                            {/* AI Generated Section Highlight */}
+                            <div className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/20 space-y-3">
+                                <div className="flex items-center gap-2 mb-3">
+                                    <div className="w-5 h-5 rounded-full bg-zinc-900/10 dark:bg-zinc-100/10 flex items-center justify-center">
+                                        <Sparkles size={12} className="text-zinc-600 dark:text-zinc-400"/>
+                                    </div>
+                                    <div className="h-3 w-28 bg-zinc-300 dark:bg-zinc-700 rounded"></div>
                                 </div>
-                                <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-500">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600"></div>
-                                    <span>Multiple AI models</span>
-                                </div>
+                                <div className="h-3 w-full bg-zinc-200 dark:bg-zinc-800 rounded opacity-60"></div>
+                                <div className="h-3 w-full bg-zinc-200 dark:bg-zinc-800 rounded opacity-60"></div>
+                                <div className="h-3 w-3/4 bg-zinc-200 dark:bg-zinc-800 rounded opacity-60"></div>
+                            </div>
+
+                            {/* Section 2 */}
+                            <div className="space-y-3">
+                                <div className="h-6 w-1/4 bg-zinc-900 dark:bg-zinc-100 rounded-lg opacity-10 dark:opacity-20"></div>
+                                <div className="h-3 w-full bg-zinc-200 dark:bg-zinc-800 rounded opacity-50"></div>
+                                <div className="h-3 w-4/5 bg-zinc-200 dark:bg-zinc-800 rounded opacity-50"></div>
                             </div>
                         </div>
                     </div>
-
-                    {/* Step 2 */}
-                    <div className="relative group">
-                        <div className="absolute -inset-0.5 bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-800 dark:to-zinc-700 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                        <div className="relative bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-8 h-full flex flex-col">
-                            <div className="flex items-center gap-4 mb-6">
-                                <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white font-bold text-lg border border-zinc-200 dark:border-zinc-700">
-                                    2
-                                </div>
-                                <h3 className="text-lg font-bold text-zinc-900 dark:text-white">Generate & Edit</h3>
-                            </div>
-                            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed flex-1">
-                                Use AI to generate comprehensive content for each section, then refine it with inline editing and markdown support.
-                            </p>
-                            <div className="mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-800 space-y-2">
-                                <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-500">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600"></div>
-                                    <span>AI-powered generation</span>
-                                </div>
-                                <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-500">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600"></div>
-                                    <span>Real-time preview</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    {/* Step 3 */}
-                    <div className="relative group">
-                        <div className="absolute -inset-0.5 bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-800 dark:to-zinc-700 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
-                        <div className="relative bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-8 h-full flex flex-col">
-                            <div className="flex items-center gap-4 mb-6">
-                                <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white font-bold text-lg border border-zinc-200 dark:border-zinc-700">
-                                    3
-                                </div>
-                                <h3 className="text-lg font-bold text-zinc-900 dark:text-white">Share & Approve</h3>
-                            </div>
-                            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed flex-1">
-                                Publish your PRD with a shareable link. Stakeholders can review, comment, and approve with webhook notifications.
-                            </p>
-                            <div className="mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-800 space-y-2">
-                                <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-500">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600"></div>
-                                    <span>Public sharing</span>
-                                </div>
-                                <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-500">
-                                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600"></div>
-                                    <span>Approval tracking</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
          </section>
@@ -333,8 +312,79 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
             </div>
          </section>
 
+         {/* --- How It Works - Vertical Stepper --- */}
+         <section className="py-24 px-6">
+            <div className="max-w-3xl mx-auto">
+               <div className="text-center mb-16">
+                  <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-4">How it works</h2>
+                  <p className="text-zinc-500 dark:text-zinc-400">Three simple steps to create professional PRDs</p>
+               </div>
+
+               <div className="space-y-8">
+                  {/* Step 1 */}
+                  <div className="flex gap-6">
+                     <div className="flex flex-col items-center">
+                        <div className="w-12 h-12 rounded-xl bg-zinc-900 dark:bg-white flex items-center justify-center text-white dark:text-zinc-900 font-bold text-lg shadow-lg flex-shrink-0">
+                           1
+                        </div>
+                        <div className="w-0.5 flex-1 bg-zinc-200 dark:bg-zinc-800 mt-4"></div>
+                     </div>
+                     <div className="flex-1 pb-12">
+                        <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-3">Configure Your PRD</h3>
+                        <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
+                           Select the sections you need for your PRD. Add your product name, description, and choose your AI model.
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                           <span className="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-xs font-medium">Custom sections</span>
+                           <span className="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-xs font-medium">Multiple AI models</span>
+                        </div>
+                     </div>
+                  </div>
+
+                  {/* Step 2 */}
+                  <div className="flex gap-6">
+                     <div className="flex flex-col items-center">
+                        <div className="w-12 h-12 rounded-xl bg-zinc-900 dark:bg-white flex items-center justify-center text-white dark:text-zinc-900 font-bold text-lg shadow-lg flex-shrink-0">
+                           2
+                        </div>
+                        <div className="w-0.5 flex-1 bg-zinc-200 dark:bg-zinc-800 mt-4"></div>
+                     </div>
+                     <div className="flex-1 pb-12">
+                        <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-3">Generate & Edit Content</h3>
+                        <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
+                           Use AI to generate comprehensive content for each section, then refine it with inline editing and markdown support.
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                           <span className="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-xs font-medium">AI-powered generation</span>
+                           <span className="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-xs font-medium">Real-time preview</span>
+                        </div>
+                     </div>
+                  </div>
+
+                  {/* Step 3 */}
+                  <div className="flex gap-6">
+                     <div className="flex flex-col items-center">
+                        <div className="w-12 h-12 rounded-xl bg-zinc-900 dark:bg-white flex items-center justify-center text-white dark:text-zinc-900 font-bold text-lg shadow-lg flex-shrink-0">
+                           3
+                        </div>
+                     </div>
+                     <div className="flex-1">
+                        <h3 className="text-xl font-bold text-zinc-900 dark:text-white mb-3">Share & Approve</h3>
+                        <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed mb-4">
+                           Publish your PRD with a shareable link. Stakeholders can review, comment, and approve with webhook notifications.
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                           <span className="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-xs font-medium">Public sharing</span>
+                           <span className="px-3 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 text-xs font-medium">Approval tracking</span>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </section>
+
          {/* --- Bottom CTA --- */}
-         <section className="py-24 px-6 text-center">
+         <section className="py-24 px-6 text-center border-t border-zinc-200/50 dark:border-zinc-800/50">
             <div className="max-w-2xl mx-auto space-y-8">
                <h2 className="text-3xl md:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
                   Ready to streamline your PRDs?
