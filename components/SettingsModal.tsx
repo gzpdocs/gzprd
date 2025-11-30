@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { X, Save, Bot, Webhook, Mail, Key, Cpu, Settings2, Zap, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import { X, Save, Bot, Webhook, Mail, Key, Cpu, Settings2, Zap, CheckCircle2, AlertCircle, Loader2, ChevronDown } from 'lucide-react';
 import { Button } from './Button';
+import { ModelDropdown } from './ModelDropdown';
 import { AppSettings } from '../types';
 import { testWebhookConnection } from '../utils/webhook';
 
@@ -18,15 +19,19 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
   onSave
 }) => {
   const [formData, setFormData] = useState<AppSettings>(initialSettings);
-  
+
   // Webhook Test State
   const [testStatus, setTestStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
+
+  // Model Dropdown State
+  const [isModelDropdownOpen, setIsModelDropdownOpen] = useState(false);
 
   // Sync state when opening
   useEffect(() => {
     if (isOpen) {
         setFormData(initialSettings);
         setTestStatus('idle');
+        setIsModelDropdownOpen(false);
     }
   }, [isOpen, initialSettings]);
 
@@ -97,15 +102,21 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                    <div className="space-y-2">
                       <label className="block text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">Gemini Model</label>
                       <div className="relative">
-                          <Cpu size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" />
-                          <select
-                            value={formData.geminiModel}
-                            onChange={e => setFormData({...formData, geminiModel: e.target.value})}
-                            className="w-full bg-white dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-800 rounded-xl pl-10 pr-4 py-3 text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:focus:ring-zinc-50 focus:border-transparent appearance-none cursor-pointer shadow-sm hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors"
+                          <Cpu size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none z-10" />
+                          <button
+                            type="button"
+                            onClick={() => setIsModelDropdownOpen(!isModelDropdownOpen)}
+                            className="w-full bg-white dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-800 rounded-xl pl-10 pr-10 py-3 text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:focus:ring-zinc-50 focus:border-transparent cursor-pointer shadow-sm hover:border-zinc-400 dark:hover:border-zinc-700 transition-colors text-left"
                           >
-                            <option value="gemini-2.5-flash">Gemini 2.5 Flash (Fast & Efficient)</option>
-                            <option value="gemini-3-pro-preview">Gemini 3.0 Pro (Complex Reasoning)</option>
-                          </select>
+                            {formData.geminiModel === 'gemini-2.5-flash' ? 'Gemini 2.5 Flash (Fast & Efficient)' : 'Gemini 3.0 Pro (Complex Reasoning)'}
+                          </button>
+                          <ChevronDown size={16} className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" />
+                          {isModelDropdownOpen && (
+                            <ModelDropdown
+                              onSelect={(modelId) => setFormData({...formData, geminiModel: modelId})}
+                              onClose={() => setIsModelDropdownOpen(false)}
+                            />
+                          )}
                       </div>
                    </div>
 
