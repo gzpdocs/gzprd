@@ -98,11 +98,11 @@ export const ImportModal: React.FC<ImportModalProps> = ({
 
         <div className="p-6 space-y-6">
 
-          <div className="flex gap-2 p-1 bg-zinc-100 dark:bg-zinc-800 rounded-lg">
+          <div className="flex gap-2 p-1 bg-zinc-100 dark:bg-zinc-800 rounded-full">
             <button
               onClick={() => setMode('id')}
               className={`
-                flex-1 py-2.5 rounded-md text-sm font-semibold transition-all
+                flex-1 py-2.5 rounded-full text-sm font-semibold transition-all
                 ${mode === 'id'
                   ? 'bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white shadow-sm'
                   : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200'}
@@ -113,7 +113,7 @@ export const ImportModal: React.FC<ImportModalProps> = ({
             <button
               onClick={() => setMode('file')}
               className={`
-                flex-1 py-2.5 rounded-md text-sm font-semibold transition-all
+                flex-1 py-2.5 rounded-full text-sm font-semibold transition-all
                 ${mode === 'file'
                   ? 'bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white shadow-sm'
                   : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200'}

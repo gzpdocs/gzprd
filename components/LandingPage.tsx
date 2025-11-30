@@ -12,8 +12,7 @@ import {
   CheckCircle2,
   Terminal,
   Key,
-  UserRoundX,
-  Download
+  UserRoundX
 } from 'lucide-react';
 
 interface LandingPageProps {
@@ -36,9 +35,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
             <div className="flex items-center gap-4">
                <button
                  onClick={() => setIsImportModalOpen(true)}
-                 className="flex items-center gap-2 text-sm font-semibold text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors hidden sm:flex px-3 py-2 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                 className="text-sm font-semibold text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors hidden sm:flex px-3 py-2 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800"
                >
-                 <Download size={16} />
                  Import
                </button>
                <Button size="sm" onClick={onStart}>Get Started</Button>
