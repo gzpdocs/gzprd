@@ -1,18 +1,12 @@
-import { PRD, Comment, ApprovalStatus, AppSettings } from '../types';
+import { PRD, Comment, DBComment, ApprovalStatus, AppSettings } from '../types';
 import { triggerApprovalWebhook } from '../utils/webhook';
+import { supabase } from '../lib/supabase';
 
-// key for local storage simulation
-const STORAGE_KEY_PREFIX = 'propel_prd_';
 const SETTINGS_KEY = 'propel_settings';
 
-// Simulate network latency
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
-
-// Safe local storage wrapper
 const safeStorage = {
   getItem: (key: string): string | null => {
     try {
-      // Direct property access can throw SecurityError in some browsers if cookies/storage disabled
       if (typeof window !== 'undefined' && window.localStorage) {
         return window.localStorage.getItem(key);
       }
@@ -28,119 +22,225 @@ const safeStorage = {
         window.localStorage.setItem(key, value);
       }
     } catch (e) {
-      console.warn("localStorage write failed (quota exceeded or denied)", e);
-      // We purposefully don't re-throw here to prevent crashing the app on auto-save
-      // in restricted environments.
+      console.warn("localStorage write failed", e);
     }
   }
 };
 
+const mapDBCommentToComment = (dbComment: DBComment): Comment => ({
+  id: dbComment.id,
+  author: dbComment.author,
+  avatar: dbComment.avatar,
+  text: dbComment.text,
+  date: new Date(dbComment.created_at).toLocaleDateString()
+});
+
+const camelToSnake = (str: string): string => {
+  return str.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
+};
+
+const snakeToCamel = (str: string): string => {
+  return str.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
+};
+
+const transformPRDToDb = (prd: PRD) => {
+  return {
+    id: prd.id,
+    title: prd.title,
+    product_name: prd.productName,
+    short_description: prd.shortDescription,
+    sections: prd.sections,
+    is_public: prd.isPublic,
+    public_settings: prd.publicSettings,
+    upvotes: prd.upvotes,
+    status: prd.status,
+    approval_status: prd.approvalStatus,
+    last_updated: prd.lastUpdated,
+    created_by: prd.createdBy || 'anonymous'
+  };
+};
+
+const transformDbToPRD = (dbRecord: any, comments: Comment[]): PRD => {
+  return {
+    id: dbRecord.id,
+    title: dbRecord.title,
+    productName: dbRecord.product_name,
+    shortDescription: dbRecord.short_description,
+    sections: dbRecord.sections,
+    isPublic: dbRecord.is_public,
+    publicSettings: dbRecord.public_settings,
+    upvotes: dbRecord.upvotes,
+    comments: comments,
+    lastUpdated: dbRecord.last_updated,
+    status: dbRecord.status,
+    approvalStatus: dbRecord.approval_status,
+    createdAt: dbRecord.created_at,
+    createdBy: dbRecord.created_by
+  };
+};
+
 export const dataService = {
-  /**
-   * Fetch a PRD by ID.
-   * In a real backend, this would be GET /api/prds/:id
-   */
   fetchPRD: async (id: string): Promise<PRD | null> => {
-    await delay(600); // Simulate network load
     try {
-      const data = safeStorage.getItem(`${STORAGE_KEY_PREFIX}${id}`);
-      if (!data) return null;
-      
-      const parsed = JSON.parse(data);
-      // Basic validation to ensure it's an object
-      if (typeof parsed !== 'object' || parsed === null) return null;
-      
-      return parsed as PRD;
+      const { data: prdData, error: prdError } = await supabase
+        .from('prds')
+        .select('*')
+        .eq('id', id)
+        .maybeSingle();
+
+      if (prdError) {
+        console.error('Error fetching PRD:', prdError);
+        return null;
+      }
+
+      if (!prdData) return null;
+
+      const { data: commentsData, error: commentsError } = await supabase
+        .from('comments')
+        .select('*')
+        .eq('prd_id', id)
+        .order('created_at', { ascending: false });
+
+      if (commentsError) {
+        console.error('Error fetching comments:', commentsError);
+      }
+
+      const comments = (commentsData || []).map(mapDBCommentToComment);
+
+      return transformDbToPRD(prdData, comments);
     } catch (e) {
-      console.error("Failed to parse PRD data", e);
+      console.error('Failed to fetch PRD:', e);
       return null;
     }
   },
 
-  /**
-   * Save or Update a PRD.
-   * In a real backend, this would be POST/PUT /api/prds
-   */
   savePRD: async (prd: PRD): Promise<PRD> => {
-    // We don't necessarily want to await this in the UI for auto-saves,
-    // but the interface should be async.
     try {
-      safeStorage.setItem(`${STORAGE_KEY_PREFIX}${prd.id}`, JSON.stringify(prd));
+      const dbPrd = transformPRDToDb(prd);
+
+      const { error } = await supabase
+        .from('prds')
+        .upsert(dbPrd, { onConflict: 'id' });
+
+      if (error) {
+        console.error('Error saving PRD:', error);
+        throw error;
+      }
+
       return prd;
     } catch (e) {
-      console.error("Failed to save PRD", e);
+      console.error('Failed to save PRD:', e);
       throw e;
     }
   },
 
-  /**
-   * Add a comment to a PRD.
-   * In a real backend, this would be POST /api/prds/:id/comments
-   */
   addComment: async (prdId: string, comment: Comment): Promise<Comment[]> => {
-    await delay(300);
-    const prd = await dataService.fetchPRD(prdId);
-    if (!prd) throw new Error('PRD not found');
-    
-    // Ensure comments array exists and is an array
-    const existingComments = Array.isArray(prd.comments) ? prd.comments : [];
-    const newComments = [comment, ...existingComments];
-    
-    const updatedPRD = { ...prd, comments: newComments };
-    await dataService.savePRD(updatedPRD);
-    
-    return newComments;
-  },
+    try {
+      const dbComment = {
+        id: comment.id,
+        prd_id: prdId,
+        author: comment.author,
+        avatar: comment.avatar,
+        text: comment.text
+      };
 
-  /**
-   * Toggle upvote.
-   * In a real backend, this would be POST /api/prds/:id/upvote
-   */
-  toggleUpvote: async (prdId: string, increment: boolean): Promise<number> => {
-    await delay(200);
-    const prd = await dataService.fetchPRD(prdId);
-    if (!prd) throw new Error('PRD not found');
+      const { error } = await supabase
+        .from('comments')
+        .insert(dbComment);
 
-    const newUpvotes = increment ? (prd.upvotes || 0) + 1 : Math.max(0, (prd.upvotes || 0) - 1);
-    const updatedPRD = { ...prd, upvotes: newUpvotes };
-    await dataService.savePRD(updatedPRD);
+      if (error) {
+        console.error('Error adding comment:', error);
+        throw error;
+      }
 
-    return newUpvotes;
-  },
+      const { data: commentsData, error: fetchError } = await supabase
+        .from('comments')
+        .select('*')
+        .eq('prd_id', prdId)
+        .order('created_at', { ascending: false });
 
-  /**
-   * Update Approval Status
-   */
-  updateStatus: async (
-    prdId: string, 
-    status: ApprovalStatus, 
-    webhookUrl?: string,
-    details?: { title: string; comment?: string; approverName?: string; approverEmail?: string }
-  ): Promise<void> => {
-    await delay(500);
-    const prd = await dataService.fetchPRD(prdId);
-    if (!prd) throw new Error('PRD not found');
+      if (fetchError) {
+        console.error('Error fetching comments:', fetchError);
+        throw fetchError;
+      }
 
-    const updatedPRD = { ...prd, approvalStatus: status };
-    await dataService.savePRD(updatedPRD);
-
-    // Trigger webhook if details provided
-    if (details) {
-      await triggerApprovalWebhook(
-        prdId, 
-        status, 
-        details.title, 
-        webhookUrl,
-        details.comment, 
-        details.approverName, 
-        details.approverEmail
-      );
+      return (commentsData || []).map(mapDBCommentToComment);
+    } catch (e) {
+      console.error('Failed to add comment:', e);
+      throw e;
     }
   },
 
-  /**
-   * Get App Settings
-   */
+  toggleUpvote: async (prdId: string, increment: boolean): Promise<number> => {
+    try {
+      const { data: currentPrd, error: fetchError } = await supabase
+        .from('prds')
+        .select('upvotes')
+        .eq('id', prdId)
+        .maybeSingle();
+
+      if (fetchError) {
+        console.error('Error fetching PRD for upvote:', fetchError);
+        throw fetchError;
+      }
+
+      if (!currentPrd) throw new Error('PRD not found');
+
+      const newUpvotes = increment
+        ? (currentPrd.upvotes || 0) + 1
+        : Math.max(0, (currentPrd.upvotes || 0) - 1);
+
+      const { error: updateError } = await supabase
+        .from('prds')
+        .update({ upvotes: newUpvotes })
+        .eq('id', prdId);
+
+      if (updateError) {
+        console.error('Error updating upvotes:', updateError);
+        throw updateError;
+      }
+
+      return newUpvotes;
+    } catch (e) {
+      console.error('Failed to toggle upvote:', e);
+      throw e;
+    }
+  },
+
+  updateStatus: async (
+    prdId: string,
+    status: ApprovalStatus,
+    webhookUrl?: string,
+    details?: { title: string; comment?: string; approverName?: string; approverEmail?: string }
+  ): Promise<void> => {
+    try {
+      const { error } = await supabase
+        .from('prds')
+        .update({ approval_status: status })
+        .eq('id', prdId);
+
+      if (error) {
+        console.error('Error updating status:', error);
+        throw error;
+      }
+
+      if (details) {
+        await triggerApprovalWebhook(
+          prdId,
+          status,
+          details.title,
+          webhookUrl,
+          details.comment,
+          details.approverName,
+          details.approverEmail
+        );
+      }
+    } catch (e) {
+      console.error('Failed to update status:', e);
+      throw e;
+    }
+  },
+
   getSettings: (): AppSettings => {
     const data = safeStorage.getItem(SETTINGS_KEY);
     if (!data) return {
@@ -152,9 +252,6 @@ export const dataService = {
     return JSON.parse(data);
   },
 
-  /**
-   * Save App Settings
-   */
   saveSettings: (settings: AppSettings): void => {
     safeStorage.setItem(SETTINGS_KEY, JSON.stringify(settings));
   }

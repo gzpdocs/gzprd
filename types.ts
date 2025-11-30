@@ -43,6 +43,17 @@ export interface PRD {
   lastUpdated: string;
   status: 'draft' | 'published';
   approvalStatus: ApprovalStatus;
+  createdAt?: string;
+  createdBy?: string;
+}
+
+export interface DBComment {
+  id: string;
+  prd_id: string;
+  author: string;
+  avatar: string;
+  text: string;
+  created_at: string;
 }
 
 export type ViewState = 'landing' | 'config' | 'edit' | 'preview' | 'public';
