@@ -121,7 +121,7 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                    </div>
 
                    <div className="space-y-2">
-                      <label className="block text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">API Key</label>
+                      <label className="block text-xs font-bold text-zinc-700 dark:text-zinc-300 uppercase tracking-wider">API Key <span className="text-red-500">*</span></label>
                       <div className="relative">
                           <Key size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400 pointer-events-none" />
                           <input
@@ -132,7 +132,15 @@ export const SettingsModal: React.FC<SettingsModalProps> = ({
                             className="w-full bg-white dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-800 rounded-xl pl-10 pr-4 py-3 text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:focus:ring-zinc-50 focus:border-transparent placeholder:text-zinc-400 shadow-sm transition-all"
                           />
                       </div>
-                      <p className="text-[10px] text-zinc-400">Leave empty to use the system default key (if configured).</p>
+                      {!formData.geminiApiKey && (
+                        <div className="flex items-start gap-2 p-3 bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg">
+                          <AlertCircle size={16} className="text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
+                          <div className="text-xs text-amber-700 dark:text-amber-300">
+                            <p className="font-semibold mb-1">API Key Required</p>
+                            <p>AI generation features will not work without a valid Gemini API key. <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" className="underline hover:text-amber-800 dark:hover:text-amber-200">Get your free API key here</a>.</p>
+                          </div>
+                        </div>
+                      )}
                    </div>
                 </div>
              </div>

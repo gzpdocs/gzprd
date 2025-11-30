@@ -303,29 +303,42 @@ export const usePRD = () => {
 
   const handleGenerateDescription = async () => {
       if (!prd.productName.trim()) return;
-      
+
+      if (!settings.geminiApiKey) {
+          alert('Please configure your Gemini API Key in Settings before using AI generation.');
+          setIsSettingsOpen(true);
+          return;
+      }
+
       setIsGeneratingDescription(true);
       try {
           const desc = await generateProductDescription(
-            prd.productName, 
-            settings.geminiApiKey, 
+            prd.productName,
+            settings.geminiApiKey,
             settings.geminiModel
           );
           setPrd(prev => ({ ...prev, shortDescription: desc }));
       } catch (error) {
           console.error(error);
+          alert('Failed to generate description. Please check your API key and try again.');
       } finally {
           setIsGeneratingDescription(false);
       }
   };
 
   const handleGenerateSection = async (sectionId: string, sectionTitle: string) => {
-    if (!prd.productName) return; 
+    if (!prd.productName) return;
+
+    if (!settings.geminiApiKey) {
+        alert('Please configure your Gemini API Key in Settings before using AI generation.');
+        setIsSettingsOpen(true);
+        return;
+    }
 
     setGeneratingSections(prev => ({ ...prev, [sectionId]: true }));
     try {
         const content = await generatePRDSection(
-          sectionTitle, 
+          sectionTitle,
           getGenerationContext(),
           settings.geminiApiKey,
           settings.geminiModel
@@ -333,6 +346,7 @@ export const usePRD = () => {
         updateSectionContent(sectionId, content);
     } catch (error) {
         console.error(`Failed to generate ${sectionTitle}`, error);
+        alert(`Failed to generate ${sectionTitle}. Please check your API key and try again.`);
     } finally {
         setGeneratingSections(prev => ({ ...prev, [sectionId]: false }));
     }
@@ -340,6 +354,12 @@ export const usePRD = () => {
 
   const handleGenerateAll = async () => {
       if (!prd.productName) return;
+
+      if (!settings.geminiApiKey) {
+          alert('Please configure your Gemini API Key in Settings before using AI generation.');
+          setIsSettingsOpen(true);
+          return;
+      }
 
       setIsGeneratingAll(true);
       const enabledSections = prd.sections.filter(s => s.isEnabled && !s.content);
