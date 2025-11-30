@@ -115,6 +115,18 @@
           -ms-overflow-style: none;
           scrollbar-width: none;
       }
+
+      /* Marquee Animation */
+      @keyframes marquee {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(-50%); }
+      }
+      .animate-marquee {
+        animation: marquee 20s linear infinite;
+      }
+      .animate-marquee:hover {
+        animation-play-state: paused;
+      }
     </style>
 
   <script type="importmap">
@@ -130,7 +142,7 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/assets/index-DENsEDCU.js"></script>
+  <script type="module" crossorigin src="/assets/index-DMxenHE5.js"></script>
 </head>
   <body>
     <div id="root"></div>
