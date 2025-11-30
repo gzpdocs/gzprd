@@ -142,8 +142,8 @@ export const usePRD = () => {
             if (viewFromUrl) {
               setView(viewFromUrl);
             } else {
-              // Default to config view if ID is present but no view param
-              setView('config');
+              // Default to public view if PRD is published, otherwise config
+              setView(fetchedPrd.isPublic ? 'public' : 'config');
             }
           } else {
              console.warn(`PRD with ID ${idFromUrl} not found. Starting new.`);

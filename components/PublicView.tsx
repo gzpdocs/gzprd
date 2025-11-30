@@ -59,21 +59,18 @@ export const PublicView: React.FC<PublicViewProps> = ({
       <nav className="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-b border-zinc-200 dark:border-zinc-800 sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <Button variant="ghost" size="sm" onClick={onBack} leftIcon={<ArrowLeft size={16}/>}>
-                  Editor
-              </Button>
               {prd.approvalStatus === 'approved' && (
-                <div className="hidden sm:flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500 text-white shadow-sm animate-enter">
+                <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-green-500 text-white shadow-sm animate-enter">
                   <ShieldCheck size={12} fill="currentColor" strokeWidth={2.5} />
                   <span className="text-[10px] font-bold uppercase tracking-wider">Approved</span>
                 </div>
               )}
             </div>
-            
+
             <div className="flex items-center gap-3">
-                 <Button 
-                   variant="outline" 
-                   size="sm" 
+                 <Button
+                   variant="outline"
+                   size="sm"
                    onClick={handleShare}
                    leftIcon={isCopied ? <Check size={14} className="text-green-500" /> : <Share2 size={14}/>}
                  >
