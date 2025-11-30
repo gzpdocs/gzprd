@@ -67,10 +67,10 @@ export const EditView: React.FC<EditViewProps> = ({
             <div className="space-y-2.5 relative">
               <div className="flex justify-between items-center">
                 <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Description</label>
-                <button 
+                <button
                   onClick={onGenerateDescription}
                   disabled={loadingStates.isGeneratingDescription || !prd.productName}
-                  className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 hover:text-zinc-900 dark:hover:text-white disabled:opacity-30 transition-colors flex items-center gap-1.5 px-2 py-1 rounded-md bg-zinc-50 hover:bg-zinc-100 dark:bg-zinc-800 dark:hover:bg-zinc-700 border border-zinc-200 dark:border-zinc-700"
+                  className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 hover:text-zinc-900 dark:hover:text-white disabled:opacity-30 transition-colors flex items-center gap-1.5 px-2 py-1 rounded-full bg-zinc-50 hover:bg-zinc-100 dark:bg-zinc-800 dark:hover:bg-zinc-700 border border-zinc-200 dark:border-zinc-700"
                 >
                   {loadingStates.isGeneratingDescription ? <RefreshCw size={12} className="animate-spin" /> : <Sparkles size={12} />}
                   Auto-Fill
