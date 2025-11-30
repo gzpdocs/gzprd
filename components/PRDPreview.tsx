@@ -20,9 +20,11 @@ export const PRDPreview: React.FC<PRDPreviewProps> = ({ prd }) => {
         <h1 className="text-3xl md:text-5xl font-extrabold text-zinc-900 dark:text-white mb-6 tracking-tight leading-tight">
           {prd.productName || 'Untitled Product'}
         </h1>
-        <p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl mx-auto font-light">
-          {prd.shortDescription || 'No description provided.'}
-        </p>
+        {prd.shortDescription && (
+          <p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 leading-relaxed max-w-2xl mx-auto font-light">
+            {prd.shortDescription}
+          </p>
+        )}
         <div className="mt-8 flex justify-center items-center gap-6 text-xs text-zinc-400 dark:text-zinc-500 font-medium uppercase tracking-wider">
              <span>Version 1.0</span>
              <span>•</span>

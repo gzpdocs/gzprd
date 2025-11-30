@@ -240,10 +240,11 @@ export const usePRD = () => {
   // --- Public View Actions (Async) ---
   
   const handlePublicComment = async (text: string) => {
+    const commentNumber = (prd.comments?.length || 0) + 1;
     const newComment = {
       id: generateId(),
-      author: 'Guest User',
-      avatar: `https://picsum.photos/seed/${Math.random()}/64/64`,
+      author: `Reviewer ${commentNumber}`,
+      avatar: `https://ui-avatars.com/api/?name=R${commentNumber}&background=71717a&color=ffffff&size=64&bold=true`,
       text,
       date: new Date().toLocaleDateString()
     };
