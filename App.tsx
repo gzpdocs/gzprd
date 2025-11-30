@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { usePRD } from './hooks/usePRD';
 import { Header } from './components/Header';
+import { ApiKeyBanner } from './components/ApiKeyBanner';
 import { ConfigView } from './components/views/ConfigView';
 import { EditView } from './components/views/EditView';
 import { PreviewView } from './components/views/PreviewView';
@@ -42,6 +43,22 @@ const App: React.FC = () => {
     handleStatusChange
   } = usePRD();
 
+  const [showApiKeyBanner, setShowApiKeyBanner] = useState(false);
+
+  useEffect(() => {
+    const bannerDismissed = localStorage.getItem('apiKeyBannerDismissed');
+    if (!settings.geminiApiKey && !bannerDismissed) {
+      setShowApiKeyBanner(true);
+    } else {
+      setShowApiKeyBanner(false);
+    }
+  }, [settings.geminiApiKey]);
+
+  const handleDismissBanner = () => {
+    localStorage.setItem('apiKeyBannerDismissed', 'true');
+    setShowApiKeyBanner(false);
+  };
+
   const navSteps = [
     { id: 'config', label: 'Structure', icon: <Settings2 size={16} /> },
     { id: 'edit', label: 'Write', icon: <FileText size={16} /> },
@@ -77,8 +94,8 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#FAFAFA] dark:bg-[#09090b] text-zinc-900 dark:text-zinc-50 font-sans transition-colors duration-300 selection:bg-zinc-900 selection:text-white dark:selection:bg-zinc-100 dark:selection:text-zinc-900">
-      
-      <Header 
+
+      <Header
         scrolled={scrolled}
         view={view}
         setView={setView}
@@ -86,8 +103,16 @@ const App: React.FC = () => {
         toggleTheme={toggleTheme}
         onPublish={initiatePublish}
         onOpenSettings={() => setIsSettingsOpen(true)}
+        hasApiKey={!!settings.geminiApiKey}
       />
-      
+
+      {showApiKeyBanner && (
+        <ApiKeyBanner
+          onDismiss={handleDismissBanner}
+          onOpenSettings={() => setIsSettingsOpen(true)}
+        />
+      )}
+
       <MobileNav view={view} onViewChange={setView} steps={navSteps} />
 
       <main className="flex-1 max-w-5xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-8 md:py-16">

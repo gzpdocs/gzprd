@@ -302,10 +302,12 @@ export const usePRD = () => {
   };
 
   const handleGenerateDescription = async () => {
-      if (!prd.productName.trim()) return;
+      if (!prd.productName.trim()) {
+          alert('Please enter a product name first.');
+          return;
+      }
 
       if (!settings.geminiApiKey) {
-          alert('Please configure your Gemini API Key in Settings before using AI generation.');
           setIsSettingsOpen(true);
           return;
       }
@@ -318,19 +320,27 @@ export const usePRD = () => {
             settings.geminiModel
           );
           setPrd(prev => ({ ...prev, shortDescription: desc }));
-      } catch (error) {
+      } catch (error: any) {
           console.error(error);
-          alert('Failed to generate description. Please check your API key and try again.');
+          const errorMsg = error?.message || 'Unknown error occurred';
+          if (errorMsg.includes('API Key')) {
+              alert('Invalid API Key. Please check your Gemini API key in Settings and try again.');
+              setIsSettingsOpen(true);
+          } else {
+              alert(`Failed to generate description: ${errorMsg}`);
+          }
       } finally {
           setIsGeneratingDescription(false);
       }
   };
 
   const handleGenerateSection = async (sectionId: string, sectionTitle: string) => {
-    if (!prd.productName) return;
+    if (!prd.productName.trim()) {
+        alert('Please enter a product name and description before generating sections.');
+        return;
+    }
 
     if (!settings.geminiApiKey) {
-        alert('Please configure your Gemini API Key in Settings before using AI generation.');
         setIsSettingsOpen(true);
         return;
     }
@@ -344,19 +354,27 @@ export const usePRD = () => {
           settings.geminiModel
         );
         updateSectionContent(sectionId, content);
-    } catch (error) {
+    } catch (error: any) {
         console.error(`Failed to generate ${sectionTitle}`, error);
-        alert(`Failed to generate ${sectionTitle}. Please check your API key and try again.`);
+        const errorMsg = error?.message || 'Unknown error occurred';
+        if (errorMsg.includes('API Key')) {
+            alert('Invalid API Key. Please check your Gemini API key in Settings and try again.');
+            setIsSettingsOpen(true);
+        } else {
+            alert(`Failed to generate ${sectionTitle}: ${errorMsg}`);
+        }
     } finally {
         setGeneratingSections(prev => ({ ...prev, [sectionId]: false }));
     }
   };
 
   const handleGenerateAll = async () => {
-      if (!prd.productName) return;
+      if (!prd.productName.trim()) {
+          alert('Please enter a product name and description before generating content.');
+          return;
+      }
 
       if (!settings.geminiApiKey) {
-          alert('Please configure your Gemini API Key in Settings before using AI generation.');
           setIsSettingsOpen(true);
           return;
       }

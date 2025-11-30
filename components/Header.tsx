@@ -1,5 +1,5 @@
 import React from 'react';
-import { Rocket, Sun, Moon, ChevronRight, Settings2, FileText, Eye, Settings } from 'lucide-react';
+import { Rocket, Sun, Moon, ChevronRight, Settings2, FileText, Eye, Settings, AlertCircle } from 'lucide-react';
 import { Button } from './Button';
 import { ViewState } from '../types';
 
@@ -11,16 +11,18 @@ interface HeaderProps {
   toggleTheme: () => void;
   onPublish: () => void;
   onOpenSettings: () => void;
+  hasApiKey: boolean;
 }
 
-export const Header: React.FC<HeaderProps> = ({ 
-  scrolled, 
-  view, 
-  setView, 
-  isDark, 
-  toggleTheme, 
+export const Header: React.FC<HeaderProps> = ({
+  scrolled,
+  view,
+  setView,
+  isDark,
+  toggleTheme,
   onPublish,
-  onOpenSettings
+  onOpenSettings,
+  hasApiKey
 }) => {
   const steps = [
     { id: 'config', label: 'Structure', icon: <Settings2 size={16} /> },
@@ -76,9 +78,13 @@ export const Header: React.FC<HeaderProps> = ({
 
            <button
               onClick={onOpenSettings}
-              className="w-10 h-10 rounded-full flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors"
+              className="relative w-10 h-10 rounded-full flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors"
+              title={!hasApiKey ? 'Configure API Key' : 'Settings'}
            >
               <Settings size={20} />
+              {!hasApiKey && (
+                <span className="absolute -top-1 -right-1 w-3 h-3 bg-amber-500 rounded-full border-2 border-white dark:border-zinc-950 animate-pulse" />
+              )}
            </button>
 
            {view === 'preview' ? (
