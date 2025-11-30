@@ -39,11 +39,8 @@ export const Header: React.FC<HeaderProps> = ({
     `}>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <div className="bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 w-10 h-10 rounded-xl flex items-center justify-center shadow-sm flex-shrink-0">
-              <Rocket size={20} strokeWidth={2.5} />
-          </div>
-          <span className="text-xl font-bold text-zinc-900 dark:text-white tracking-tight hidden sm:inline-block">
-            Propel
+          <span className="text-xl font-bold text-zinc-900 dark:text-white tracking-tight">
+            GZPRD
           </span>
         </div>
 

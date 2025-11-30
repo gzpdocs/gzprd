@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { PRD, ApprovalStatus } from '../types';
 import { PRDPreview } from './PRDPreview';
-import { ThumbsUp, MessageSquare, Share2, ArrowLeft, ShieldCheck, Check } from 'lucide-react';
+import { ThumbsUp, MessageSquare, Share2, ArrowLeft, ShieldCheck, Check, Sun, Moon } from 'lucide-react';
 import { Button } from './Button';
 import { ApprovalControl } from './ApprovalControl';
 
@@ -21,8 +21,35 @@ export const PublicView: React.FC<PublicViewProps> = ({
   onStatusChange 
 }) => {
   const [newComment, setNewComment] = useState('');
-  const [hasUpvoted, setHasUpvoted] = useState(false); // Local tracking for UI feedback
+  const [hasUpvoted, setHasUpvoted] = useState(false);
   const [isCopied, setIsCopied] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return document.documentElement.classList.contains('dark');
+    }
+    return false;
+  });
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = !isDark;
+    setIsDark(newTheme);
+    if (newTheme) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  };
 
   // Safeguard: Ensure publicSettings exists
   const settings = prd.publicSettings || { allowComments: true, allowUpvotes: true, enableApprovalFlow: false };
@@ -56,7 +83,13 @@ export const PublicView: React.FC<PublicViewProps> = ({
   return (
     <div className="min-h-screen bg-zinc-50/50 dark:bg-zinc-950 transition-colors duration-300">
       {/* Public Navbar */}
-      <nav className="bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-b border-zinc-200 dark:border-zinc-800 sticky top-0 z-10">
+      <nav className={`
+        sticky top-0 z-10 transition-all duration-300
+        ${scrolled
+          ? 'translate-y-0 opacity-100'
+          : '-translate-y-full opacity-0'}
+        bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-b border-zinc-200 dark:border-zinc-800
+      `}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
             <div className="flex items-center gap-4">
               {prd.approvalStatus === 'approved' && (
@@ -68,6 +101,12 @@ export const PublicView: React.FC<PublicViewProps> = ({
             </div>
 
             <div className="flex items-center gap-3">
+                 <button
+                    onClick={toggleTheme}
+                    className="w-10 h-10 rounded-full flex items-center justify-center text-zinc-500 dark:text-zinc-400 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors"
+                 >
+                    {isDark ? <Sun size={20} /> : <Moon size={20} />}
+                 </button>
                  <Button
                    variant="outline"
                    size="sm"

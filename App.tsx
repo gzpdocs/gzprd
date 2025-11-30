@@ -53,7 +53,7 @@ const App: React.FC = () => {
       <div className="min-h-screen flex items-center justify-center bg-[#FAFAFA] dark:bg-[#09090b]">
         <div className="flex flex-col items-center gap-4 animate-enter">
           <Loader2 size={32} className="text-zinc-400 animate-spin" />
-          <span className="text-sm font-medium text-zinc-500">Loading Propel...</span>
+          <span className="text-sm font-medium text-zinc-500">Loading GZPRD...</span>
         </div>
       </div>
     );

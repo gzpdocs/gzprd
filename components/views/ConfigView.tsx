@@ -18,7 +18,7 @@ export const ConfigView: React.FC<ConfigViewProps> = ({ prd, onSectionToggle, on
           What's in your PRD?
         </h1>
         <p className="text-base md:text-xl text-zinc-500 dark:text-zinc-400 max-w-lg mx-auto leading-relaxed font-light">
-          Select the sections you need. Propel will help you fill them out with intelligent suggestions.
+          Select the sections you need. GZPRD will help you fill them out with intelligent suggestions.
         </p>
       </div>
       

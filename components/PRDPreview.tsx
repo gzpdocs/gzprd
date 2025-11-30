@@ -68,7 +68,7 @@ export const PRDPreview: React.FC<PRDPreviewProps> = ({ prd }) => {
       {/* Document Footer */}
       <div className="bg-zinc-50 dark:bg-zinc-950/50 border-t border-zinc-100 dark:border-zinc-800 p-8 text-center">
           <p className="text-zinc-400 dark:text-zinc-600 text-xs font-medium uppercase tracking-widest">
-            Generated with Propel
+            Generated with GZPRD
           </p>
       </div>
     </div>

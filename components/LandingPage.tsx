@@ -26,10 +26,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
        <nav className="border-b border-zinc-200/50 dark:border-zinc-800/50 bg-white/50 dark:bg-zinc-950/50 backdrop-blur-md sticky top-0 z-50">
           <div className="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between w-full">
             <div className="flex items-center gap-3">
-              <div className="bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 w-9 h-9 rounded-lg flex items-center justify-center shadow-sm">
-                  <Rocket size={18} strokeWidth={2.5} />
-              </div>
-              <span className="text-lg font-bold tracking-tight text-zinc-900 dark:text-white">Propel</span>
+              <span className="text-lg font-bold tracking-tight text-zinc-900 dark:text-white">GZPRD</span>
             </div>
             <div className="flex items-center gap-4">
                <button 
@@ -65,7 +62,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
 
             {/* Subhead */}
             <p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 max-w-2xl leading-relaxed mb-10">
-              Propel is the AI-native workspace for PMs. Generate user stories, refine acceptance criteria, and sync approvals with your engineering pipeline via Webhooks.
+              GZPRD is the AI-native workspace for PMs. Generate user stories, refine acceptance criteria, and sync approvals with your engineering pipeline via Webhooks.
             </p>
 
             {/* CTAs */}
@@ -130,7 +127,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
                
                <div className="mb-16 md:text-center max-w-2xl mx-auto">
                   <h2 className="text-3xl font-bold text-zinc-900 dark:text-white mb-4">Everything you need to ship.</h2>
-                  <p className="text-zinc-500 dark:text-zinc-400">From the first draft to the final approval, Propel provides the structure and intelligence your product team needs.</p>
+                  <p className="text-zinc-500 dark:text-zinc-400">From the first draft to the final approval, GZPRD provides the structure and intelligence your product team needs.</p>
                </div>
 
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
@@ -180,22 +177,22 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
                   </div>
 
                   {/* Feature 5: Webhooks (Featured - Last) */}
-                  <div className="p-8 rounded-3xl bg-[#0F0F12] border border-zinc-800 text-white md:col-span-2 relative overflow-hidden group flex flex-col md:flex-row gap-8 items-start">
+                  <div className="p-8 rounded-3xl bg-white dark:bg-[#0F0F12] border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-white md:col-span-2 relative overflow-hidden group flex flex-col md:flex-row gap-8 items-start">
                      
                      {/* Left: Content */}
                      <div className="relative z-10 flex-1 flex flex-col h-full justify-between">
                         <div>
-                           <div className="w-12 h-12 bg-zinc-800 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg border border-zinc-700">
+                           <div className="w-12 h-12 bg-zinc-100 dark:bg-zinc-800 rounded-2xl flex items-center justify-center text-zinc-900 dark:text-white mb-6 shadow-lg border border-zinc-200 dark:border-zinc-700">
                               <Webhook size={24} />
                            </div>
-                           <h3 className="text-xl font-bold mb-3 text-white">Powerful Webhook Integrations</h3>
-                           <p className="text-zinc-400 leading-relaxed text-sm">
+                           <h3 className="text-xl font-bold mb-3 text-zinc-900 dark:text-white">Powerful Webhook Integrations</h3>
+                           <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-sm">
                               Connect your PRDs to your engineering stack. Automatically trigger CI/CD pipelines, create Jira epics, or notify Slack channels when a PRD status changes to "Approved".
                            </p>
                         </div>
                         <div className="flex items-center gap-3 mt-8">
-                           <div className="px-3 py-1.5 rounded-md bg-white/10 text-zinc-300 text-xs font-mono backdrop-blur-md border border-white/10">POST /api/webhooks</div>
-                           <div className="px-3 py-1.5 rounded-md bg-green-500/10 text-green-400 text-xs font-bold flex items-center gap-1.5 border border-green-500/20">
+                           <div className="px-3 py-1.5 rounded-md bg-zinc-100 dark:bg-white/10 text-zinc-600 dark:text-zinc-300 text-xs font-mono backdrop-blur-md border border-zinc-200 dark:border-white/10">POST /api/webhooks</div>
+                           <div className="px-3 py-1.5 rounded-md bg-green-100 dark:bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-bold flex items-center gap-1.5 border border-green-200 dark:border-green-500/20">
                               <CheckCircle2 size={12} />
                               <span>200 OK</span>
                            </div>
@@ -204,46 +201,46 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
 
                      {/* Right: Code Snippet Visual */}
                      <div className="relative z-10 w-full md:w-80 flex-shrink-0">
-                         <div className="rounded-xl overflow-hidden bg-[#000000] border border-zinc-800 shadow-2xl">
+                         <div className="rounded-xl overflow-hidden bg-zinc-50 dark:bg-[#000000] border border-zinc-200 dark:border-zinc-800 shadow-2xl">
                              {/* Mac-style Window Header */}
-                             <div className="flex items-center gap-1.5 px-4 py-3 border-b border-zinc-800/50 bg-zinc-900/50">
-                                 <div className="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
-                                 <div className="w-2.5 h-2.5 rounded-full bg-amber-500/50"></div>
-                                 <div className="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+                             <div className="flex items-center gap-1.5 px-4 py-3 border-b border-zinc-200 dark:border-zinc-800/50 bg-white dark:bg-zinc-900/50">
+                                 <div className="w-2.5 h-2.5 rounded-full bg-red-400 dark:bg-red-500/50"></div>
+                                 <div className="w-2.5 h-2.5 rounded-full bg-amber-400 dark:bg-amber-500/50"></div>
+                                 <div className="w-2.5 h-2.5 rounded-full bg-green-400 dark:bg-green-500/50"></div>
                              </div>
                              {/* Code Area */}
-                             <div className="p-4 font-mono text-[10px] sm:text-xs leading-relaxed text-zinc-300">
-                                 <div className="flex items-center gap-2 mb-2 text-zinc-500 select-none">
+                             <div className="p-4 font-mono text-[10px] sm:text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                                 <div className="flex items-center gap-2 mb-2 text-zinc-400 dark:text-zinc-500 select-none">
                                      <Terminal size={12} />
                                      <span>payload.json</span>
                                  </div>
-                                 <div><span className="text-purple-400">{"{"}</span></div>
+                                 <div><span className="text-purple-600 dark:text-purple-400">{"{"}</span></div>
                                  <div className="pl-4">
-                                     <span className="text-blue-400">"event"</span>: <span className="text-green-400">"prd_approved"</span>,
+                                     <span className="text-blue-600 dark:text-blue-400">"event"</span>: <span className="text-green-600 dark:text-green-400">"prd_approved"</span>,
                                  </div>
                                  <div className="pl-4">
-                                     <span className="text-blue-400">"prd_id"</span>: <span className="text-green-400">"propel_123"</span>,
+                                     <span className="text-blue-600 dark:text-blue-400">"prd_id"</span>: <span className="text-green-600 dark:text-green-400">"gzprd_123"</span>,
                                  </div>
                                  <div className="pl-4">
-                                     <span className="text-blue-400">"title"</span>: <span className="text-green-400">"Q4 Roadmap"</span>,
+                                     <span className="text-blue-600 dark:text-blue-400">"title"</span>: <span className="text-green-600 dark:text-green-400">"Q4 Roadmap"</span>,
                                  </div>
                                  <div className="pl-4">
-                                     <span className="text-blue-400">"approver"</span>: <span className="text-purple-400">{"{"}</span>
+                                     <span className="text-blue-600 dark:text-blue-400">"approver"</span>: <span className="text-purple-600 dark:text-purple-400">{"{"}</span>
                                  </div>
                                  <div className="pl-8">
-                                     <span className="text-blue-400">"email"</span>: <span className="text-green-400">"alice@co.com"</span>
+                                     <span className="text-blue-600 dark:text-blue-400">"email"</span>: <span className="text-green-600 dark:text-green-400">"alice@co.com"</span>
                                  </div>
                                  <div className="pl-4">
-                                     <span className="text-purple-400">{"}"}</span>
+                                     <span className="text-purple-600 dark:text-purple-400">{"}"}</span>
                                  </div>
-                                 <div><span className="text-purple-400">{"}"}</span></div>
+                                 <div><span className="text-purple-600 dark:text-purple-400">{"}"}</span></div>
                              </div>
                          </div>
                      </div>
 
-                     {/* Decorative Gradients */}
-                     <div className="absolute right-0 top-0 w-2/3 h-full bg-gradient-to-l from-indigo-500/10 to-transparent pointer-events-none mix-blend-screen"></div>
-                     <div className="absolute bottom-0 right-10 w-40 h-40 bg-purple-500/10 blur-[60px] pointer-events-none rounded-full"></div>
+                     {/* Decorative Gradients - Only visible in dark mode */}
+                     <div className="absolute right-0 top-0 w-2/3 h-full bg-gradient-to-l from-indigo-500/10 to-transparent pointer-events-none mix-blend-screen opacity-0 dark:opacity-100"></div>
+                     <div className="absolute bottom-0 right-10 w-40 h-40 bg-purple-500/10 blur-[60px] pointer-events-none rounded-full opacity-0 dark:opacity-100"></div>
                   </div>
 
                </div>
@@ -254,7 +251,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
          <section className="py-24 px-6 text-center">
             <div className="max-w-2xl mx-auto space-y-8">
                <h2 className="text-3xl md:text-4xl font-extrabold text-zinc-900 dark:text-white tracking-tight">
-                  Ready to propel your product?
+                  Ready to streamline your PRDs?
                </h2>
                <p className="text-zinc-500 dark:text-zinc-400 text-lg">
                   Join thousands of Product Managers building the future with AI assistance. No credit card required.
@@ -273,13 +270,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
        <footer className="py-12 border-t border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950">
           <div className="max-w-6xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-6">
               <div className="flex items-center gap-2">
-                 <div className="w-6 h-6 rounded bg-zinc-900 dark:bg-white flex items-center justify-center text-white dark:text-zinc-900">
-                    <Rocket size={12} strokeWidth={3} />
-                 </div>
-                 <span className="font-bold text-zinc-900 dark:text-white tracking-tight">Propel</span>
+                 <span className="font-bold text-zinc-900 dark:text-white tracking-tight">GZPRD</span>
               </div>
               <p className="text-zinc-400 dark:text-zinc-600 text-sm">
-                 © {new Date().getFullYear()} Propel PRD. Built with Bolt.new.
+                 © {new Date().getFullYear()} GZPRD. Built with Bolt.new.
               </p>
           </div>
        </footer>
