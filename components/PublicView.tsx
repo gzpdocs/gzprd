@@ -86,8 +86,8 @@ export const PublicView: React.FC<PublicViewProps> = ({
       <nav className={`
         sticky top-0 z-10 transition-all duration-300
         ${scrolled
-          ? 'translate-y-0 opacity-100'
-          : '-translate-y-full opacity-0'}
+          ? '-translate-y-full opacity-0'
+          : 'translate-y-0 opacity-100'}
         bg-white/80 dark:bg-zinc-900/80 backdrop-blur-sm border-b border-zinc-200 dark:border-zinc-800
       `}>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
