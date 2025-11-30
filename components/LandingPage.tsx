@@ -67,7 +67,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
             <div className="flex items-center gap-4">
                <button
                  onClick={() => setIsImportModalOpen(true)}
-                 className="text-sm font-semibold text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors hidden sm:flex px-3 py-2 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                 className="text-sm font-semibold text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors hidden sm:flex px-3 py-2 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800"
                >
                  Import
                </button>
@@ -325,7 +325,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
                   {/* Step 1 */}
                   <div className="flex gap-6">
                      <div className="flex flex-col items-center">
-                        <div className="w-12 h-12 rounded-xl bg-zinc-900 dark:bg-white flex items-center justify-center text-white dark:text-zinc-900 font-bold text-lg shadow-lg flex-shrink-0">
+                        <div className="w-12 h-12 rounded-full bg-zinc-900 dark:bg-white flex items-center justify-center text-white dark:text-zinc-900 font-bold text-lg shadow-lg flex-shrink-0">
                            1
                         </div>
                         <div className="w-0.5 flex-1 bg-zinc-200 dark:bg-zinc-800 mt-4"></div>
@@ -345,7 +345,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
                   {/* Step 2 */}
                   <div className="flex gap-6">
                      <div className="flex flex-col items-center">
-                        <div className="w-12 h-12 rounded-xl bg-zinc-900 dark:bg-white flex items-center justify-center text-white dark:text-zinc-900 font-bold text-lg shadow-lg flex-shrink-0">
+                        <div className="w-12 h-12 rounded-full bg-zinc-900 dark:bg-white flex items-center justify-center text-white dark:text-zinc-900 font-bold text-lg shadow-lg flex-shrink-0">
                            2
                         </div>
                         <div className="w-0.5 flex-1 bg-zinc-200 dark:bg-zinc-800 mt-4"></div>
@@ -365,7 +365,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
                   {/* Step 3 */}
                   <div className="flex gap-6">
                      <div className="flex flex-col items-center">
-                        <div className="w-12 h-12 rounded-xl bg-zinc-900 dark:bg-white flex items-center justify-center text-white dark:text-zinc-900 font-bold text-lg shadow-lg flex-shrink-0">
+                        <div className="w-12 h-12 rounded-full bg-zinc-900 dark:bg-white flex items-center justify-center text-white dark:text-zinc-900 font-bold text-lg shadow-lg flex-shrink-0">
                            3
                         </div>
                      </div>
@@ -416,7 +416,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
                 href="https://buymeacoffee.com/avenca.digital"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#FFDD00] hover:bg-[#FFED4E] text-zinc-900 font-semibold text-sm transition-all shadow-sm hover:shadow-md"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#FFDD00] hover:bg-[#FFED4E] text-zinc-900 font-semibold text-sm transition-all shadow-sm hover:shadow-md"
               >
                 <Coffee size={18} />
                 <span>Buy me a beer</span>
