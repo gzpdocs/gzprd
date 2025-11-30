@@ -41,9 +41,12 @@ export const Header: React.FC<HeaderProps> = ({
     `}>
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         <div className="flex items-center gap-2.5">
-          <span className="text-xl font-bold text-zinc-900 dark:text-white tracking-tight">
+          <button
+            onClick={() => setView('landing')}
+            className="text-xl font-bold text-zinc-900 dark:text-white tracking-tight hover:opacity-70 transition-opacity"
+          >
             GZPRD
-          </span>
+          </button>
         </div>
 
         {/* Centered Navigation Pill - Desktop */}

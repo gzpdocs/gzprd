@@ -188,17 +188,6 @@ export const AIField: React.FC<AIFieldProps> = ({
             ) : (
                 // Default Action Buttons
                 <div className="flex items-center gap-2 sm:gap-2.5">
-                    {/* Zoom Toggle */}
-                    <button
-                        onClick={onToggleZoom}
-                        className="p-3 text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800"
-                        title={isZoomed ? "Minimize" : "Focus Mode"}
-                    >
-                        {isZoomed ? <Minimize2 size={18} className="sm:w-4 sm:h-4" /> : <Maximize2 size={18} className="sm:w-4 sm:h-4" />}
-                    </button>
-                    
-                    <div className="w-px h-6 bg-zinc-200 dark:bg-zinc-800 mx-1"></div>
-
                     {/* Clear Button */}
                     {value.length > 0 && !isGenerating && (
                         <button
@@ -225,15 +214,15 @@ export const AIField: React.FC<AIFieldProps> = ({
                     {/* Auto-Fill Button */}
                     <button
                         onClick={() => {
-                            setMode('write'); 
+                            setMode('write');
                             onGenerate();
                         }}
                         disabled={isGenerating || isEnhancing}
                         className={`
                             flex items-center gap-2 px-5 py-2.5 rounded-full
                             text-xs font-bold uppercase tracking-wider transition-all
-                            ${isGenerating 
-                                ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 cursor-wait' 
+                            ${isGenerating
+                                ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-400 cursor-wait'
                                 : 'bg-zinc-900 dark:bg-zinc-50 text-white dark:text-zinc-900 hover:bg-zinc-800 dark:hover:bg-zinc-200 shadow-md'}
                         `}
                     >
@@ -243,6 +232,17 @@ export const AIField: React.FC<AIFieldProps> = ({
                             <Sparkles size={14} fill="currentColor" className="sm:w-3.5 sm:h-3.5" />
                         )}
                         <span className={isGenerating ? 'inline' : 'hidden sm:inline'}>{isGenerating ? 'Generating' : 'Auto-Fill'}</span>
+                    </button>
+
+                    <div className="w-px h-6 bg-zinc-200 dark:bg-zinc-800 mx-1"></div>
+
+                    {/* Zoom Toggle */}
+                    <button
+                        onClick={onToggleZoom}
+                        className="p-3 text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100 transition-colors rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                        title={isZoomed ? "Minimize" : "Focus Mode"}
+                    >
+                        {isZoomed ? <Minimize2 size={18} className="sm:w-4 sm:h-4" /> : <Maximize2 size={18} className="sm:w-4 sm:h-4" />}
                     </button>
                 </div>
             )}
