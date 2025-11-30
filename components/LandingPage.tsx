@@ -146,6 +146,17 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
                         Generate comprehensive PRD sections like Risks and Success Metrics instantly, tailored to your product description.
                      </p>
                   </div>
+
+                 {/* Feature 4: Approval */}
+                  <div className="p-8 rounded-3xl bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
+                     <div className="w-12 h-12 bg-zinc-50 dark:bg-zinc-900 rounded-2xl flex items-center justify-center text-zinc-900 dark:text-white mb-6 border border-zinc-100 dark:border-zinc-800 shadow-sm">
+                        <ShieldCheck size={24} />
+                     </div>
+                     <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-2">Approval Workflows</h3>
+                     <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                        Formalize the process. Stakeholders can review, comment, and officially approve PRDs with a tracked audit trail.
+                     </p>
+                  </div>
                  
                   {/* Feature: No Account (New) */}
                   <div className="p-8 rounded-3xl bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
@@ -171,16 +182,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
 
                   
 
-                  {/* Feature 4: Approval */}
-                  <div className="p-8 rounded-3xl bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
-                     <div className="w-12 h-12 bg-zinc-50 dark:bg-zinc-900 rounded-2xl flex items-center justify-center text-zinc-900 dark:text-white mb-6 border border-zinc-100 dark:border-zinc-800 shadow-sm">
-                        <ShieldCheck size={24} />
-                     </div>
-                     <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-2">Approval Workflows</h3>
-                     <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                        Formalize the process. Stakeholders can review, comment, and officially approve PRDs with a tracked audit trail.
-                     </p>
-                  </div>
+                  
 
                   {/* Feature 5: Webhooks (Featured - Last) */}
                   <div className="p-8 rounded-3xl bg-white dark:bg-[#0F0F12] border border-zinc-200 dark:border-zinc-800 text-zinc-900 dark:text-white md:col-span-2 relative overflow-hidden group flex flex-col md:flex-row gap-8 items-start">
