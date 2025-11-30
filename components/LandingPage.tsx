@@ -28,7 +28,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(150);
 
-  const phrases = ['ship faster.', 'drive impact.', 'align teams.', 'scale execution.'];
+  const phrases = ['ship faster', 'matter', 'drive clarity', 'save time', 'reduce noise', 'make sense', 'move teams', 'make impact'];
 
   useEffect(() => {
     const handleType = () => {
@@ -87,9 +87,9 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
             </div>
 
             {/* Headline */}
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6 min-h-[140px] md:min-h-[180px]">
-              Write PRDs that <br className="hidden md:block"/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-900 via-zinc-600 to-zinc-900 dark:from-white dark:via-zinc-400 dark:to-white animate-gradient inline-flex items-center">
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-[1.3] mb-6 min-h-[160px] md:min-h-[200px] flex flex-col items-center justify-start">
+              <span>Write PRDs that</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-900 via-zinc-600 to-zinc-900 dark:from-white dark:via-zinc-400 dark:to-white animate-gradient inline-flex items-baseline">
                 {typewriterText}
                 <span className="inline-block w-1 h-12 md:h-16 bg-zinc-900 dark:bg-white ml-1 animate-pulse"></span>
               </span>
