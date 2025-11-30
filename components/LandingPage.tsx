@@ -134,7 +134,18 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
                </div>
 
                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-                  
+
+
+                 {/* Feature 3: Smart AI */}
+                  <div className="p-8 rounded-3xl bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
+                     <div className="w-12 h-12 bg-zinc-50 dark:bg-zinc-900 rounded-2xl flex items-center justify-center text-zinc-900 dark:text-white mb-6 border border-zinc-100 dark:border-zinc-800 shadow-sm">
+                        <Sparkles size={24} />
+                     </div>
+                     <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-2">Context-Aware AI</h3>
+                     <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
+                        Generate comprehensive PRD sections like Risks and Success Metrics instantly, tailored to your product description.
+                     </p>
+                  </div>
                   {/* Feature 1: No Account (New) */}
                   <div className="p-8 rounded-3xl bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
                      <div className="w-12 h-12 bg-zinc-50 dark:bg-zinc-900 rounded-2xl flex items-center justify-center text-zinc-900 dark:text-white mb-6 border border-zinc-100 dark:border-zinc-800 shadow-sm">
@@ -157,16 +168,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
                      </p>
                   </div>
 
-                  {/* Feature 3: Smart AI */}
-                  <div className="p-8 rounded-3xl bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
-                     <div className="w-12 h-12 bg-zinc-50 dark:bg-zinc-900 rounded-2xl flex items-center justify-center text-zinc-900 dark:text-white mb-6 border border-zinc-100 dark:border-zinc-800 shadow-sm">
-                        <Sparkles size={24} />
-                     </div>
-                     <h3 className="text-lg font-bold text-zinc-900 dark:text-white mb-2">Context-Aware AI</h3>
-                     <p className="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed">
-                        Generate comprehensive PRD sections like Risks and Success Metrics instantly, tailored to your product description.
-                     </p>
-                  </div>
+                  
 
                   {/* Feature 4: Approval */}
                   <div className="p-8 rounded-3xl bg-white dark:bg-zinc-900/40 border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors">
