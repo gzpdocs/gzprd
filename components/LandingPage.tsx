@@ -275,6 +275,32 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
                                  </div>
                                  <div><span className="text-purple-600 dark:text-purple-400">{"}"}</span></div>
                              </div>
+
+                             {/* Integration Logos Marquee */}
+                             <div className="border-t border-zinc-200 dark:border-zinc-800/50 bg-white/50 dark:bg-zinc-900/30 py-3 overflow-hidden">
+                                 <div className="flex items-center gap-6 animate-marquee whitespace-nowrap">
+                                     <div className="inline-flex items-center gap-6">
+                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Make</span>
+                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">n8n</span>
+                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Zapier</span>
+                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Slack</span>
+                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Jira</span>
+                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Linear</span>
+                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">GitHub</span>
+                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Discord</span>
+                                     </div>
+                                     <div className="inline-flex items-center gap-6">
+                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Make</span>
+                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">n8n</span>
+                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Zapier</span>
+                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Slack</span>
+                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Jira</span>
+                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Linear</span>
+                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">GitHub</span>
+                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Discord</span>
+                                     </div>
+                                 </div>
+                             </div>
                          </div>
                      </div>
 
