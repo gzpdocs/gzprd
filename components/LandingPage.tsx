@@ -230,11 +230,39 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
                               Connect your PRDs to your engineering stack. Automatically trigger CI/CD pipelines, create Jira epics, or notify Slack channels when a PRD status changes to "Approved".
                            </p>
                         </div>
-                        <div className="flex items-center gap-3 mt-8">
-                           <div className="px-3 py-1.5 rounded-md bg-zinc-100 dark:bg-white/10 text-zinc-600 dark:text-zinc-300 text-xs font-mono backdrop-blur-md border border-zinc-200 dark:border-white/10">POST /your-custom-endpoint</div>
-                           <div className="px-3 py-1.5 rounded-md bg-green-100 dark:bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-bold flex items-center gap-1.5 border border-green-200 dark:border-green-500/20">
-                              <CheckCircle2 size={12} />
-                              <span>200 OK</span>
+                        <div className="flex flex-col gap-4 mt-8">
+                           <div className="flex items-center gap-3">
+                              <div className="px-3 py-1.5 rounded-md bg-zinc-100 dark:bg-white/10 text-zinc-600 dark:text-zinc-300 text-xs font-mono backdrop-blur-md border border-zinc-200 dark:border-white/10">POST /your-custom-endpoint</div>
+                              <div className="px-3 py-1.5 rounded-md bg-green-100 dark:bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-bold flex items-center gap-1.5 border border-green-200 dark:border-green-500/20">
+                                 <CheckCircle2 size={12} />
+                                 <span>200 OK</span>
+                              </div>
+                           </div>
+
+                           {/* Integration Logos Marquee */}
+                           <div className="rounded-lg overflow-hidden bg-zinc-50 dark:bg-zinc-900/50 border border-zinc-200 dark:border-zinc-800 py-3">
+                              <div className="flex items-center gap-6 animate-marquee whitespace-nowrap">
+                                 <div className="inline-flex items-center gap-6">
+                                    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Make</span>
+                                    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">n8n</span>
+                                    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Zapier</span>
+                                    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Slack</span>
+                                    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Jira</span>
+                                    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Linear</span>
+                                    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">GitHub</span>
+                                    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Discord</span>
+                                 </div>
+                                 <div className="inline-flex items-center gap-6">
+                                    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Make</span>
+                                    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">n8n</span>
+                                    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Zapier</span>
+                                    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Slack</span>
+                                    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Jira</span>
+                                    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Linear</span>
+                                    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">GitHub</span>
+                                    <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Discord</span>
+                                 </div>
+                              </div>
                            </div>
                         </div>
                      </div>
@@ -274,32 +302,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
                                      <span className="text-purple-600 dark:text-purple-400">{"}"}</span>
                                  </div>
                                  <div><span className="text-purple-600 dark:text-purple-400">{"}"}</span></div>
-                             </div>
-
-                             {/* Integration Logos Marquee */}
-                             <div className="border-t border-zinc-200 dark:border-zinc-800/50 bg-white/50 dark:bg-zinc-900/30 py-3 overflow-hidden">
-                                 <div className="flex items-center gap-6 animate-marquee whitespace-nowrap">
-                                     <div className="inline-flex items-center gap-6">
-                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Make</span>
-                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">n8n</span>
-                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Zapier</span>
-                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Slack</span>
-                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Jira</span>
-                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Linear</span>
-                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">GitHub</span>
-                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Discord</span>
-                                     </div>
-                                     <div className="inline-flex items-center gap-6">
-                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Make</span>
-                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">n8n</span>
-                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Zapier</span>
-                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Slack</span>
-                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Jira</span>
-                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Linear</span>
-                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">GitHub</span>
-                                         <span className="text-xs font-bold text-zinc-600 dark:text-zinc-400">Discord</span>
-                                     </div>
-                                 </div>
                              </div>
                          </div>
                      </div>
