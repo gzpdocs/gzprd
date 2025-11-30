@@ -82,7 +82,6 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
             
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 shadow-sm mb-8 hover:border-zinc-300 dark:hover:border-zinc-700 transition-colors cursor-default">
-              <Sparkles size={12} className="text-amber-500 fill-amber-500" />
               <span className="text-xs font-bold text-zinc-600 dark:text-zinc-300 tracking-wide uppercase">Half Baked & Bolt Hackathon</span>
             </div>
 
