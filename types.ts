@@ -35,6 +35,7 @@ export interface PRD {
   title: string;
   productName: string;
   shortDescription: string;
+  version: string;
   sections: PRDSection[];
   isPublic: boolean;
   publicSettings: PublicSettings;

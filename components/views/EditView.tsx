@@ -56,7 +56,7 @@ export const EditView: React.FC<EditViewProps> = ({
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2.5">
               <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Product Name</label>
-              <input 
+              <input
                 type="text"
                 className="w-full bg-white dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-800 rounded-xl px-4 py-3 text-base font-medium text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:focus:ring-zinc-50 focus:border-transparent transition-all shadow-sm"
                 placeholder="Name your product..."
@@ -64,26 +64,37 @@ export const EditView: React.FC<EditViewProps> = ({
                 onChange={(e) => onUpdateContext('productName', e.target.value)}
               />
             </div>
-            <div className="space-y-2.5 relative">
-              <div className="flex justify-between items-center">
-                <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Description</label>
-                <button
-                  onClick={onGenerateDescription}
-                  disabled={loadingStates.isGeneratingDescription || !prd.productName}
-                  className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 hover:text-zinc-900 dark:hover:text-white disabled:opacity-30 transition-colors flex items-center gap-1.5 px-2 py-1 rounded-full bg-zinc-50 hover:bg-zinc-100 dark:bg-zinc-800 dark:hover:bg-zinc-700 border border-zinc-200 dark:border-zinc-700"
-                >
-                  {loadingStates.isGeneratingDescription ? <RefreshCw size={12} className="animate-spin" /> : <Sparkles size={12} />}
-                  Auto-Fill
-                </button>
-              </div>
-              <textarea 
-                className="w-full bg-white dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:focus:ring-zinc-50 focus:border-transparent transition-all resize-none leading-relaxed shadow-sm"
-                rows={3}
-                placeholder="What does it do? Who is it for?"
-                value={prd.shortDescription}
-                onChange={(e) => onUpdateContext('shortDescription', e.target.value)}
+            <div className="space-y-2.5">
+              <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Version</label>
+              <input
+                type="text"
+                className="w-full bg-white dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-800 rounded-xl px-4 py-3 text-base font-medium text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:focus:ring-zinc-50 focus:border-transparent transition-all shadow-sm"
+                placeholder="e.g., 1.0, 2.1.0, v1.0-beta"
+                value={prd.version}
+                onChange={(e) => onUpdateContext('version', e.target.value)}
               />
             </div>
+          </div>
+
+          <div className="space-y-2.5 mt-6 relative">
+            <div className="flex justify-between items-center">
+              <label className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">Description</label>
+              <button
+                onClick={onGenerateDescription}
+                disabled={loadingStates.isGeneratingDescription || !prd.productName}
+                className="text-[10px] font-bold uppercase tracking-wider text-zinc-500 hover:text-zinc-900 dark:hover:text-white disabled:opacity-30 transition-colors flex items-center gap-1.5 px-2 py-1 rounded-full bg-zinc-50 hover:bg-zinc-100 dark:bg-zinc-800 dark:hover:bg-zinc-700 border border-zinc-200 dark:border-zinc-700"
+              >
+                {loadingStates.isGeneratingDescription ? <RefreshCw size={12} className="animate-spin" /> : <Sparkles size={12} />}
+                Auto-Fill
+              </button>
+            </div>
+            <textarea
+              className="w-full bg-white dark:bg-zinc-950 border border-zinc-300 dark:border-zinc-800 rounded-xl px-4 py-3 text-sm text-zinc-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-zinc-900 dark:focus:ring-zinc-50 focus:border-transparent transition-all resize-none leading-relaxed shadow-sm"
+              rows={3}
+              placeholder="What does it do? Who is it for?"
+              value={prd.shortDescription}
+              onChange={(e) => onUpdateContext('shortDescription', e.target.value)}
+            />
           </div>
         </div>
       </div>

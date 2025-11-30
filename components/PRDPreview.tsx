@@ -26,7 +26,7 @@ export const PRDPreview: React.FC<PRDPreviewProps> = ({ prd }) => {
           </p>
         )}
         <div className="mt-8 flex justify-center items-center gap-6 text-xs text-zinc-400 dark:text-zinc-500 font-medium uppercase tracking-wider">
-             <span>Version 1.0</span>
+             <span>Version {prd.version}</span>
              <span>•</span>
              <span>{new Date(prd.lastUpdated).toLocaleDateString()}</span>
         </div>

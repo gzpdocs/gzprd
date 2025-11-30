@@ -49,6 +49,7 @@ export const usePRD = () => {
     title: 'New PRD',
     productName: '',
     shortDescription: '',
+    version: '1.0',
     sections: JSON.parse(JSON.stringify(DEFAULT_SECTIONS)), // Deep copy to avoid reference issues
     isPublic: false,
     publicSettings: { ...DEFAULT_PUBLIC_SETTINGS },
@@ -233,7 +234,7 @@ export const usePRD = () => {
     }));
   };
 
-  const updateContext = (field: 'productName' | 'shortDescription', value: string) => {
+  const updateContext = (field: 'productName' | 'shortDescription' | 'version', value: string) => {
     setPrd(prev => ({ ...prev, [field]: value }));
   };
 
