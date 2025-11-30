@@ -52,11 +52,11 @@ export const PRDPreview: React.FC<PRDPreviewProps> = ({ prd }) => {
 
       {/* Table of Contents - Floating Right */}
       <div
-        className="fixed right-6 top-1/2 -translate-y-1/2 z-20 hidden lg:block"
+        className="fixed right-6 top-1/2 -translate-y-1/2 z-20 hidden lg:block max-h-[calc(100vh-3rem)] my-6"
         onMouseEnter={() => setIsTableOfContentsOpen(true)}
         onMouseLeave={() => setIsTableOfContentsOpen(false)}
       >
-        <div className="relative">
+        <div className="relative h-full flex items-center">
           {/* Collapsed State - Lines */}
           <div className={`
             bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-3
@@ -79,18 +79,21 @@ export const PRDPreview: React.FC<PRDPreviewProps> = ({ prd }) => {
 
           {/* Expanded State - Full Menu */}
           <div className={`
-            absolute right-0 top-0
-            bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-4
+            absolute right-0 top-1/2 -translate-y-1/2
+            bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800
             transition-opacity duration-200 w-72
+            max-h-[calc(100vh-6rem)] overflow-hidden flex flex-col
             ${isTableOfContentsOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}
           `}>
-            <div className="space-y-1">
-              <div className="flex items-center gap-2 mb-3 pb-3 border-b border-zinc-200 dark:border-zinc-800">
+            <div className="p-4 flex-shrink-0">
+              <div className="flex items-center gap-2 pb-3 border-b border-zinc-200 dark:border-zinc-800">
                 <List size={16} className="text-zinc-500 dark:text-zinc-400" />
                 <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
                   Contents
                 </span>
               </div>
+            </div>
+            <div className="overflow-y-auto px-4 pb-4 space-y-1">
               {enabledSections.map((section, index) => (
                 <button
                   key={section.id}
