@@ -199,7 +199,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
                            </p>
                         </div>
                         <div className="flex items-center gap-3 mt-8">
-                           <div className="px-3 py-1.5 rounded-md bg-zinc-100 dark:bg-white/10 text-zinc-600 dark:text-zinc-300 text-xs font-mono backdrop-blur-md border border-zinc-200 dark:border-white/10">POST /your-endpoint</div>
+                           <div className="px-3 py-1.5 rounded-md bg-zinc-100 dark:bg-white/10 text-zinc-600 dark:text-zinc-300 text-xs font-mono backdrop-blur-md border border-zinc-200 dark:border-white/10">POST /your-custom-endpoint</div>
                            <div className="px-3 py-1.5 rounded-md bg-green-100 dark:bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-bold flex items-center gap-1.5 border border-green-200 dark:border-green-500/20">
                               <CheckCircle2 size={12} />
                               <span>200 OK</span>
