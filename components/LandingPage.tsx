@@ -1,24 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button } from './Button';
-import { 
-  Rocket, 
-  Sparkles, 
-  ShieldCheck, 
-  ChevronRight, 
-  Webhook, 
-  Share2, 
+import { ImportModal } from './ImportModal';
+import { PRD } from '../types';
+import {
+  Rocket,
+  Sparkles,
+  ShieldCheck,
+  ChevronRight,
+  Webhook,
+  Share2,
   CheckCircle2,
   Terminal,
   Key,
   UserRoundX,
-  FileJson
+  Download
 } from 'lucide-react';
 
 interface LandingPageProps {
   onStart: () => void;
+  onImport: (prd: PRD) => void;
+  onImportById: (id: string) => Promise<void>;
 }
 
-export const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
+export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onImportById }) => {
+  const [isImportModalOpen, setIsImportModalOpen] = useState(false);
   return (
     <div className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090b] text-zinc-900 dark:text-zinc-50 flex flex-col font-sans selection:bg-zinc-900 selection:text-white dark:selection:bg-zinc-100 dark:selection:text-zinc-900">
        
@@ -29,12 +34,12 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
               <span className="text-lg font-bold tracking-tight text-zinc-900 dark:text-white">GZPRD</span>
             </div>
             <div className="flex items-center gap-4">
-               <button 
-                 className="flex items-center gap-2 text-sm font-medium text-zinc-500 hover:text-zinc-900 dark:hover:text-white transition-colors hidden sm:flex px-3 py-2 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800"
-                 title="Import JSON (Coming Soon)"
+               <button
+                 onClick={() => setIsImportModalOpen(true)}
+                 className="flex items-center gap-2 text-sm font-semibold text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white transition-colors hidden sm:flex px-3 py-2 rounded-md hover:bg-zinc-100 dark:hover:bg-zinc-800"
                >
-                 <FileJson size={16} />
-                 Import JSON
+                 <Download size={16} />
+                 Import
                </button>
                <Button size="sm" onClick={onStart}>Get Started</Button>
             </div>
@@ -277,6 +282,13 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart }) => {
               </p>
           </div>
        </footer>
+
+       <ImportModal
+         isOpen={isImportModalOpen}
+         onClose={() => setIsImportModalOpen(false)}
+         onImport={onImport}
+         onImportById={onImportById}
+       />
     </div>
   );
 };

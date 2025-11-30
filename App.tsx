@@ -40,7 +40,9 @@ const App: React.FC = () => {
     // Actions
     handlePublicComment,
     handlePublicUpvote,
-    handleStatusChange
+    handleStatusChange,
+    handleImportPRD,
+    handleImportById
   } = usePRD();
 
   const [showApiKeyBanner, setShowApiKeyBanner] = useState(false);
@@ -77,7 +79,13 @@ const App: React.FC = () => {
   }
 
   if (view === 'landing') {
-    return <LandingPage onStart={() => setView('config')} />;
+    return (
+      <LandingPage
+        onStart={() => setView('config')}
+        onImport={handleImportPRD}
+        onImportById={handleImportById}
+      />
+    );
   }
 
   if (view === 'public') {

@@ -272,11 +272,11 @@ export const usePRD = () => {
   };
 
   const handleStatusChange = async (
-    status: ApprovalStatus, 
+    status: ApprovalStatus,
     details?: { title: string; comment: string; approverName: string; approverEmail: string }
   ) => {
     setPrd(prev => ({ ...prev, approvalStatus: status }));
-    
+
     try {
       await dataService.updateStatus(prd.id, status, settings.webhookUrl, {
         title: prd.productName,
@@ -286,6 +286,38 @@ export const usePRD = () => {
       console.error("Failed to update status", e);
     }
   }
+
+  const handleImportPRD = (importedPRD: PRD) => {
+    const newPRD = {
+      ...importedPRD,
+      id: generateId(),
+      isPublic: false,
+      status: 'draft' as const,
+      lastUpdated: new Date().toISOString(),
+    };
+    setPrd(newPRD);
+    setView('config');
+  };
+
+  const handleImportById = async (id: string) => {
+    try {
+      const importedPRD = await dataService.getPRD(id);
+      if (!importedPRD) {
+        throw new Error('PRD not found');
+      }
+      const newPRD = {
+        ...importedPRD,
+        id: generateId(),
+        isPublic: false,
+        status: 'draft' as const,
+        lastUpdated: new Date().toISOString(),
+      };
+      setPrd(newPRD);
+      setView('config');
+    } catch (error: any) {
+      throw new Error(error.message || 'Failed to import PRD');
+    }
+  };
 
 
   // --- AI Generation Logic ---
@@ -462,6 +494,8 @@ export const usePRD = () => {
     handlePublicComment,
     handlePublicUpvote,
     handleStatusChange,
+    handleImportPRD,
+    handleImportById,
     loadingStates: {
       generatingSections,
       isGeneratingDescription,
