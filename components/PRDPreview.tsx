@@ -50,62 +50,66 @@ export const PRDPreview: React.FC<PRDPreviewProps> = ({ prd }) => {
   return (
     <div className="bg-white dark:bg-zinc-900 rounded-xl md:rounded-2xl border-y md:border border-zinc-200 dark:border-zinc-800 shadow-sm min-h-[80vh] overflow-hidden transition-colors duration-300 relative">
 
-      {/* Table of Contents - Floating */}
+      {/* Table of Contents - Floating Right */}
       <div
-        className="fixed left-4 top-1/2 -translate-y-1/2 z-20 hidden lg:block"
+        className="fixed right-6 top-1/2 -translate-y-1/2 z-20 hidden lg:block"
         onMouseEnter={() => setIsTableOfContentsOpen(true)}
         onMouseLeave={() => setIsTableOfContentsOpen(false)}
       >
-        <div className={`
-          transition-all duration-300 ease-out
-          ${isTableOfContentsOpen ? 'w-72' : 'w-12'}
-        `}>
+        <div className="relative">
+          {/* Collapsed State - Lines */}
           <div className={`
-            bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800
-            transition-all duration-300
-            ${isTableOfContentsOpen ? 'p-4' : 'p-3'}
+            bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-3
+            transition-opacity duration-200
+            ${isTableOfContentsOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}
           `}>
-            {!isTableOfContentsOpen ? (
-              <div className="flex flex-col gap-1.5">
-                {enabledSections.map((section) => (
-                  <div
-                    key={section.id}
-                    className={`h-1 rounded-full transition-all ${
-                      activeSection === section.id
-                        ? 'bg-zinc-900 dark:bg-zinc-100 w-6'
-                        : 'bg-zinc-300 dark:bg-zinc-700 w-4'
-                    }`}
-                  />
-                ))}
+            <div className="flex flex-col gap-1.5">
+              {enabledSections.map((section) => (
+                <div
+                  key={section.id}
+                  className={`h-1 rounded-full transition-all ${
+                    activeSection === section.id
+                      ? 'bg-zinc-900 dark:bg-zinc-100 w-6'
+                      : 'bg-zinc-300 dark:bg-zinc-700 w-4'
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* Expanded State - Full Menu */}
+          <div className={`
+            absolute right-0 top-0
+            bg-white dark:bg-zinc-900 rounded-2xl shadow-lg border border-zinc-200 dark:border-zinc-800 p-4
+            transition-opacity duration-200 w-72
+            ${isTableOfContentsOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}
+          `}>
+            <div className="space-y-1">
+              <div className="flex items-center gap-2 mb-3 pb-3 border-b border-zinc-200 dark:border-zinc-800">
+                <List size={16} className="text-zinc-500 dark:text-zinc-400" />
+                <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
+                  Contents
+                </span>
               </div>
-            ) : (
-              <div className="space-y-1 animate-in fade-in duration-200">
-                <div className="flex items-center gap-2 mb-3 pb-3 border-b border-zinc-200 dark:border-zinc-800">
-                  <List size={16} className="text-zinc-500 dark:text-zinc-400" />
-                  <span className="text-xs font-bold text-zinc-500 dark:text-zinc-400 uppercase tracking-wider">
-                    Contents
+              {enabledSections.map((section, index) => (
+                <button
+                  key={section.id}
+                  onClick={() => scrollToSection(section.id)}
+                  className={`
+                    w-full text-left px-3 py-2 rounded-lg text-sm transition-all
+                    ${activeSection === section.id
+                      ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-semibold'
+                      : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 font-medium'
+                    }
+                  `}
+                >
+                  <span className="text-zinc-400 dark:text-zinc-600 mr-2">
+                    {String(index + 1).padStart(2, '0')}
                   </span>
-                </div>
-                {enabledSections.map((section, index) => (
-                  <button
-                    key={section.id}
-                    onClick={() => scrollToSection(section.id)}
-                    className={`
-                      w-full text-left px-3 py-2 rounded-lg text-sm transition-all
-                      ${activeSection === section.id
-                        ? 'bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-semibold'
-                        : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-800/50 font-medium'
-                      }
-                    `}
-                  >
-                    <span className="text-zinc-400 dark:text-zinc-600 mr-2">
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    {section.title}
-                  </button>
-                ))}
-              </div>
-            )}
+                  {section.title}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       </div>
