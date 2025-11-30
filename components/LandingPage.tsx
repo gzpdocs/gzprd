@@ -115,47 +115,89 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
             </div>
          </header>
 
-         {/* --- Visual Mockup (Abstract) --- */}
+         {/* --- Process Flow --- */}
          <section className="px-6 mb-24 md:mb-32">
-            <div className="max-w-5xl mx-auto relative group">
-                {/* Glow Effect */}
-                <div className="absolute -inset-1 bg-gradient-to-r from-zinc-200 to-zinc-400 dark:from-zinc-800 dark:to-zinc-700 rounded-2xl blur opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-                
-                {/* UI Container */}
-                <div className="relative bg-white dark:bg-[#0C0C0E] rounded-xl border border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden aspect-[16/10] md:aspect-[21/9] flex flex-col">
-                    {/* Fake Browser Header */}
-                    <div className="h-10 border-b border-zinc-100 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/50 flex items-center px-4 gap-2">
-                        <div className="w-3 h-3 rounded-full bg-red-400/80"></div>
-                        <div className="w-3 h-3 rounded-full bg-amber-400/80"></div>
-                        <div className="w-3 h-3 rounded-full bg-green-400/80"></div>
-                        <div className="ml-4 h-5 w-64 bg-zinc-200 dark:bg-zinc-800 rounded-md opacity-50"></div>
-                    </div>
-                    {/* Fake Content */}
-                    <div className="flex-1 p-8 md:p-12 flex gap-8">
-                        <div className="w-1/4 space-y-4 hidden md:block">
-                            <div className="h-4 w-2/3 bg-zinc-100 dark:bg-zinc-800 rounded"></div>
-                            <div className="h-4 w-full bg-zinc-100 dark:bg-zinc-800 rounded opacity-60"></div>
-                            <div className="h-4 w-3/4 bg-zinc-100 dark:bg-zinc-800 rounded opacity-60"></div>
-                            <div className="h-4 w-1/2 bg-zinc-100 dark:bg-zinc-800 rounded opacity-60"></div>
-                        </div>
-                        <div className="flex-1 space-y-6">
-                            <div className="space-y-3">
-                                <div className="h-8 w-1/3 bg-zinc-900 dark:bg-zinc-100 rounded-lg opacity-10 dark:opacity-20"></div>
-                                <div className="h-4 w-3/4 bg-zinc-200 dark:bg-zinc-800 rounded opacity-50"></div>
-                            </div>
-                            <div className="p-6 rounded-xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-900/20 space-y-3">
-                                <div className="flex items-center gap-2 mb-4">
-                                    <div className="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-500 flex items-center justify-center">
-                                        <Sparkles size={12} fill="currentColor"/>
-                                    </div>
-                                    <div className="h-3 w-24 bg-zinc-200 dark:bg-zinc-800 rounded"></div>
+            <div className="max-w-6xl mx-auto">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+
+                    {/* Step 1 */}
+                    <div className="relative group">
+                        <div className="absolute -inset-0.5 bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-800 dark:to-zinc-700 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                        <div className="relative bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-8 h-full flex flex-col">
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white font-bold text-lg border border-zinc-200 dark:border-zinc-700">
+                                    1
                                 </div>
-                                <div className="h-3 w-full bg-zinc-200 dark:bg-zinc-800 rounded opacity-60"></div>
-                                <div className="h-3 w-full bg-zinc-200 dark:bg-zinc-800 rounded opacity-60"></div>
-                                <div className="h-3 w-2/3 bg-zinc-200 dark:bg-zinc-800 rounded opacity-60"></div>
+                                <h3 className="text-lg font-bold text-zinc-900 dark:text-white">Configure</h3>
+                            </div>
+                            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed flex-1">
+                                Select the sections you need for your PRD. Add your product name, description, and choose your AI model.
+                            </p>
+                            <div className="mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-800 space-y-2">
+                                <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600"></div>
+                                    <span>Custom sections</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600"></div>
+                                    <span>Multiple AI models</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    {/* Step 2 */}
+                    <div className="relative group">
+                        <div className="absolute -inset-0.5 bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-800 dark:to-zinc-700 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                        <div className="relative bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-8 h-full flex flex-col">
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white font-bold text-lg border border-zinc-200 dark:border-zinc-700">
+                                    2
+                                </div>
+                                <h3 className="text-lg font-bold text-zinc-900 dark:text-white">Generate & Edit</h3>
+                            </div>
+                            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed flex-1">
+                                Use AI to generate comprehensive content for each section, then refine it with inline editing and markdown support.
+                            </p>
+                            <div className="mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-800 space-y-2">
+                                <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600"></div>
+                                    <span>AI-powered generation</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600"></div>
+                                    <span>Real-time preview</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Step 3 */}
+                    <div className="relative group">
+                        <div className="absolute -inset-0.5 bg-gradient-to-br from-zinc-200 to-zinc-300 dark:from-zinc-800 dark:to-zinc-700 rounded-2xl blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                        <div className="relative bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 p-8 h-full flex flex-col">
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className="w-10 h-10 rounded-xl bg-zinc-100 dark:bg-zinc-800 flex items-center justify-center text-zinc-900 dark:text-white font-bold text-lg border border-zinc-200 dark:border-zinc-700">
+                                    3
+                                </div>
+                                <h3 className="text-lg font-bold text-zinc-900 dark:text-white">Share & Approve</h3>
+                            </div>
+                            <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed flex-1">
+                                Publish your PRD with a shareable link. Stakeholders can review, comment, and approve with webhook notifications.
+                            </p>
+                            <div className="mt-6 pt-6 border-t border-zinc-200 dark:border-zinc-800 space-y-2">
+                                <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600"></div>
+                                    <span>Public sharing</span>
+                                </div>
+                                <div className="flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-500">
+                                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-400 dark:bg-zinc-600"></div>
+                                    <span>Approval tracking</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
          </section>
