@@ -1,6 +1,6 @@
-# Propel PRD
+# GZPPRD
 
-**Propel PRD** is an intelligent, AI-powered workspace designed to help Product Managers generate, refine, and manage Product Requirements Documents (PRDs) with speed and precision.
+**GZPRD** is an intelligent, AI-powered workspace designed to help Product Managers generate, refine, and manage Product Requirements Documents (PRDs) with speed and precision.
 
 Built with **React 19**, **Tailwind CSS**, and powered by **Google's Gemini** model, it streamlines the product definition process from initial concept to stakeholder approval.
 
@@ -63,3 +63,4 @@ To connect a real backend:
 ## 📄 License
 
 MIT
+
