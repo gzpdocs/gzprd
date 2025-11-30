@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from './Button';
 import { ImportModal } from './ImportModal';
 import { PRD } from '../types';
@@ -23,6 +23,37 @@ interface LandingPageProps {
 
 export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onImportById }) => {
   const [isImportModalOpen, setIsImportModalOpen] = useState(false);
+  const [typewriterText, setTypewriterText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [loopNum, setLoopNum] = useState(0);
+  const [typingSpeed, setTypingSpeed] = useState(150);
+
+  const phrases = ['ship faster.', 'drive impact.', 'align teams.', 'scale execution.'];
+
+  useEffect(() => {
+    const handleType = () => {
+      const currentPhrase = phrases[loopNum % phrases.length];
+      const updatedText = isDeleting
+        ? currentPhrase.substring(0, typewriterText.length - 1)
+        : currentPhrase.substring(0, typewriterText.length + 1);
+
+      setTypewriterText(updatedText);
+
+      if (!isDeleting && updatedText === currentPhrase) {
+        setTimeout(() => setIsDeleting(true), 2000);
+        setTypingSpeed(2000);
+      } else if (isDeleting && updatedText === '') {
+        setIsDeleting(false);
+        setLoopNum(loopNum + 1);
+        setTypingSpeed(500);
+      } else {
+        setTypingSpeed(isDeleting ? 50 : 150);
+      }
+    };
+
+    const timer = setTimeout(handleType, typingSpeed);
+    return () => clearTimeout(timer);
+  }, [typewriterText, isDeleting, loopNum, typingSpeed]);
   return (
     <div className="min-h-screen bg-[#FAFAFA] dark:bg-[#09090b] text-zinc-900 dark:text-zinc-50 flex flex-col font-sans selection:bg-zinc-900 selection:text-white dark:selection:bg-zinc-100 dark:selection:text-zinc-900">
        
@@ -56,10 +87,11 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
             </div>
 
             {/* Headline */}
-            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6">
+            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6 min-h-[140px] md:min-h-[180px]">
               Write PRDs that <br className="hidden md:block"/>
-              <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-900 via-zinc-600 to-zinc-900 dark:from-white dark:via-zinc-400 dark:to-white animate-gradient">
-                ship faster.
+              <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-900 via-zinc-600 to-zinc-900 dark:from-white dark:via-zinc-400 dark:to-white animate-gradient inline-flex items-center">
+                {typewriterText}
+                <span className="inline-block w-1 h-12 md:h-16 bg-zinc-900 dark:bg-white ml-1 animate-pulse"></span>
               </span>
             </h1>
 
@@ -74,7 +106,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
                  Start Writing
               </Button>
               <Button size="lg" variant="outline" onClick={onStart} className="h-14 px-8 text-lg w-full sm:w-auto bg-white dark:bg-zinc-900">
-                 View Documentation
+                 View Example
               </Button>
             </div>
          </header>
