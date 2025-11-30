@@ -301,7 +301,7 @@ export const usePRD = () => {
 
   const handleImportById = async (id: string) => {
     try {
-      const importedPRD = await dataService.getPRD(id);
+      const importedPRD = await dataService.fetchPRD(id);
       if (!importedPRD) {
         throw new Error('PRD not found');
       }
