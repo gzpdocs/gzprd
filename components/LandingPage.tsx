@@ -57,15 +57,15 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onStart, onImport, onI
 
             {/* Headline */}
             <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-zinc-900 dark:text-white leading-[1.1] mb-6">
-              Product Requirements, <br className="hidden md:block"/>
+              Write PRDs that <br className="hidden md:block"/>
               <span className="text-transparent bg-clip-text bg-gradient-to-br from-zinc-900 via-zinc-600 to-zinc-900 dark:from-white dark:via-zinc-400 dark:to-white animate-gradient">
-                engineered for speed.
+                ship faster.
               </span>
             </h1>
 
             {/* Subhead */}
             <p className="text-lg md:text-xl text-zinc-500 dark:text-zinc-400 max-w-2xl leading-relaxed mb-10">
-              GZPRD is the AI-native workspace for PMs. Generate user stories, refine acceptance criteria, and sync approvals with your engineering pipeline via Webhooks.
+              AI-powered workspace for product teams. Draft specifications, collaborate with stakeholders, and automate approvals without leaving your workflow.
             </p>
 
             {/* CTAs */}

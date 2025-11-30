@@ -13,6 +13,22 @@ import { MobileNav } from './components/MobileNav';
 import { Settings2, FileText, Eye, Loader2 } from 'lucide-react';
 
 const App: React.FC = () => {
+  useEffect(() => {
+    const updateMetaTags = () => {
+      const titleElement = document.querySelector('title');
+      const descriptionElement = document.querySelector('meta[name="description"]');
+
+      if (titleElement) {
+        titleElement.textContent = 'GZPRD - AI-Powered Product Requirements Tool';
+      }
+
+      if (descriptionElement) {
+        descriptionElement.setAttribute('content', 'Write product requirements that ship faster. AI-powered workspace for product teams to draft specifications, collaborate with stakeholders, and automate approvals.');
+      }
+    };
+
+    updateMetaTags();
+  }, []);
   const {
     view,
     setView,
