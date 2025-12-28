@@ -60,11 +60,9 @@ export const PreviewView: React.FC<PreviewViewProps> = ({ prd, onBack, onPublish
               Export
             </Button>
             {showExportMenu && (
-              <>
-                <div className="fixed inset-0 z-40 cursor-default" onClick={() => setShowExportMenu(false)} />
-                <ExportMenu onExport={handleExport} onClose={() => setShowExportMenu(false)} />
-              </>
+              <div className="hidden sm:block fixed inset-0 z-40 cursor-default" onClick={() => setShowExportMenu(false)} />
             )}
+            <ExportMenu isOpen={showExportMenu} onExport={handleExport} onClose={() => setShowExportMenu(false)} />
           </div>
 
           <Button variant="primary" className="flex-1 sm:flex-none" onClick={onPublish} leftIcon={<Rocket size={16}/>}>
