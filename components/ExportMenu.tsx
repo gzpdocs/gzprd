@@ -19,7 +19,7 @@ export const ExportMenu: React.FC<ExportMenuProps> = ({ onExport, onClose }) => 
   // but for now we rely on the parent or simple backdrop.
 
   return (
-    <div className="absolute top-full right-0 mt-2 w-56 bg-white dark:bg-zinc-900 rounded-xl shadow-xl ring-1 ring-black/5 dark:ring-white/10 overflow-hidden z-50 animate-enter origin-top-right p-1">
+    <div className="absolute top-full left-0 sm:right-0 sm:left-auto mt-2 w-56 bg-white dark:bg-zinc-900 rounded-xl shadow-xl ring-1 ring-black/5 dark:ring-white/10 overflow-hidden z-50 animate-enter origin-top-left sm:origin-top-right p-1">
       <div className="flex flex-col gap-0.5">
         {options.map((option) => (
           <button
